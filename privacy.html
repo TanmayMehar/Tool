@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - TooKit | Your Data Protection</title>
+    <meta name="description" content="TooKit's Privacy Policy explains how we collect, use, and protect your data. Learn about our cookies, tracking practices, and your privacy rights.">
+    <meta name="keywords" content="privacy policy, TooKit, data protection, cookies, tracking, user data">
+    <meta name="author" content="TooKit Team">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    
+    <style>
+        :root {
+            --primary-blue: #1a56db;
+            --dark-blue: #0f2e6f;
+            --black: #0a0a18;
+            --light-bg: #f5f7ff;
+            --white: #ffffff;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 10, 24, 0.8), rgba(15, 46, 111, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231a56db" width="100" height="100"/><path fill="%230a0a18" d="M0 0L100 100" stroke-width="0"/></svg>');
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Last Updated */
+        .last-updated {
+            text-align: center;
+            margin: -20px 0 30px;
+            color: var(--gray);
+            font-style: italic;
+        }
+        
+        /* Policy Content */
+        .policy-content {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .policy-section {
+            margin-bottom: 40px;
+        }
+        
+        .policy-section h2 {
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .policy-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+        
+        .policy-section p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .policy-section ul {
+            margin: 15px 0 15px 30px;
+            color: var(--gray);
+        }
+        
+        .policy-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background-color: rgba(26, 86, 219, 0.1);
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .data-table th {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: rgba(26, 86, 219, 0.05);
+        }
+        
+        /* TOC Styles */
+        .toc {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .toc h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .toc ul {
+            list-style: none;
+            column-count: 2;
+        }
+        
+        .toc ul li {
+            margin-bottom: 10px;
+        }
+        
+        .toc ul li a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .toc ul li a:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+        
+        /* AdSense Ad Unit */
+        .ad-container {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .ad-placeholder {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 90px 20px;
+            border-radius: 6px;
+            margin: 0 auto;
+            max-width: 728px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1 1 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-blue);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .policy-content {
+                padding: 25px;
+            }
+            
+            .toc ul {
+                column-count: 1;
+            }
+            
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .policy-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .toc {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Too<span>Kit</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="/Tool/about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <p class="last-updated">Last updated: September 5, 2023</p>
+        
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#information-collection">1. Information We Collect</a></li>
+                <li><a href="#cookies-tracking">2. Cookies and Tracking Technologies</a></li>
+                <li><a href="#data-usage">3. How We Use Your Data</a></li>
+                <li><a href="#data-sharing">4. Data Sharing and Disclosure</a></li>
+                <li><a href="#data-security">5. Data Security</a></li>
+                <li><a href="#user-rights">6. Your Privacy Rights</a></li>
+                <li><a href="#children-privacy">7. Children's Privacy</a></li>
+                <li><a href="#policy-changes">8. Policy Changes</a></li>
+                <li><a href="#contact-us">9. Contact Us</a></li>
+            </ul>
+        </div>
+        
+        <!-- AdSense Ad Unit -->
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Replace this with your AdSense code -->
+                AdSense Ad Unit (Responsive)
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- Policy Content -->
+        <div class="policy-content">
+            <section id="information-collection" class="policy-section">
+                <h2>1. Information We Collect</h2>
+                <p>We collect several types of information from and about users of our website, including:</p>
+                
+                <h3>Personal Information</h3>
+                <ul>
+                    <li>Contact information (name, email address, phone number)</li>
+                    <li>Account credentials (username, password)</li>
+                    <li>Payment information when you purchase our services</li>
+                    <li>Communications you send to us</li>
+                </ul>
+                
+                <h3>Usage Data</h3>
+                <ul>
+                    <li>IP address and device information</li>
+                    <li>Browser type and version</li>
+                    <li>Pages visited and time spent on our site</li>
+                    <li>Referring websites and search terms</li>
+                </ul>
+                
+                <div class="highlight">
+                    <p>We collect this information when you register on our site, place an order, subscribe to our newsletter, fill out a form, or use our tools.</p>
+                </div>
+            </section>
+            
+            <section id="cookies-tracking" class="policy-section">
+                <h2>2. Cookies and Tracking Technologies</h2>
+                <p>We use cookies and similar tracking technologies to track activity on our website and store certain information.</p>
+                
+                <h3>Types of Cookies We Use</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Cookie Type</th>
+                            <th>Purpose</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Essential Cookies</td>
+                            <td>Necessary for the website to function properly</td>
+                            <td>Session</td>
+                        </tr>
+                        <tr>
+                            <td>Preferences Cookies</td>
+                            <td>Remember your preferences and settings</td>
+                            <td>1 year</td>
+                        </tr>
+                        <tr>
+                            <td>Analytics Cookies</td>
+                            <td>Collect information about how you use our website</td>
+                            <td>2 years</td>
+                        </tr>
+                        <tr>
+                            <td>Marketing Cookies</td>
+                            <td>Track visitors across websites to display relevant ads</td>
+                            <td>90 days</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Third-Party Tracking</h3>
+                <p>We use third-party services such as Google Analytics to measure and analyze traffic on our website. These services may use cookies and other tracking technologies to perform their services.</p>
+                
+                <div class="highlight">
+                    <p>You can control cookies through your browser settings. However, disabling cookies may limit your ability to use some features of our website.</p>
+                </div>
+            </section>
+            
+            <section id="data-usage" class="policy-section">
+                <h2>3. How We Use Your Data</h2>
+                <p>We use the information we collect for various purposes, including:</p>
+                
+                <ul>
+                    <li>To provide and maintain our services</li>
+                    <li>To process your transactions and send you related information</li>
+                    <li>To personalize your experience and deliver content relevant to your interests</li>
+                    <li>To improve our website, tools, and services</li>
+                    <li>To communicate with you about updates, security alerts, and support messages</li>
+                    <li>To monitor and analyze trends, usage, and activities</li>
+                    <li>To detect, prevent, and address technical issues and fraudulent activities</li>
+                </ul>
+            </section>
+            
+            <section id="data-sharing" class="policy-section">
+                <h2>4. Data Sharing and Disclosure</h2>
+                <p>We may share your personal information in the following situations:</p>
+                
+                <ul>
+                    <li><strong>Service Providers:</strong> We may share your information with third-party vendors who perform services on our behalf.</li>
+                    <li><strong>Business Transfers:</strong> In connection with any merger, sale of company assets, or acquisition.</li>
+                    <li><strong>Legal Requirements:</strong> When required by law, court order, or governmental authority.</li>
+                    <li><strong>Protection of Rights:</strong> To protect and defend the rights or property of TooKit.</li>
+                </ul>
+                
+                <p>We do not sell your personal information to third parties for their marketing purposes.</p>
+            </section>
+            
+            <section id="data-security" class="policy-section">
+                <h2>5. Data Security</h2>
+                <p>We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction.</p>
+                
+                <p>These measures include internal reviews of our data collection, storage, and processing practices, as well as physical security measures to guard against unauthorized access to systems where we store personal data.</p>
+                
+                <div class="highlight">
+                    <p>While we strive to use commercially acceptable means to protect your personal information, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security.</p>
+                </div>
+            </section>
+            
+            <section id="user-rights" class="policy-section">
+                <h2>6. Your Privacy Rights</h2>
+                <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+                
+                <ul>
+                    <li><strong>Access:</strong> You can request copies of your personal data.</li>
+                    <li><strong>Rectification:</strong> You can request that we correct any information you believe is inaccurate.</li>
+                    <li><strong>Erasure:</strong> You can request that we erase your personal data under certain conditions.</li>
+                    <li><strong>Restriction:</strong> You can request that we restrict the processing of your personal data.</li>
+                    <li><strong>Data Portability:</strong> You can request that we transfer the data we have collected to another organization.</li>
+                    <li><strong>Objection:</strong> You can object to our processing of your personal data.</li>
+                </ul>
+                
+                <p>To exercise any of these rights, please contact us using the contact information provided in this policy.</p>
+            </section>
+            
+            <section id="children-privacy" class="policy-section">
+                <h2>7. Children's Privacy</h2>
+                <p>Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13.</p>
+                
+                <p>If you are a parent or guardian and believe that your child has provided us with personal information, please contact us immediately. We will take steps to remove that information from our servers.</p>
+            </section>
+            
+            <section id="policy-changes" class="policy-section">
+                <h2>8. Policy Changes</h2>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+                
+                <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+            </section>
+            
+            <section id="contact-us" class="policy-section">
+                <h2>9. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                
+                <ul>
+                    <li>By email: <a href="mailto:privacy@tookit.com">privacy@tookit.com</a></li>
+                    <li>By visiting this page on our website: <a href="/contact">Contact Us</a></li>
+                    <li>By mail: TooKit Privacy Team, 123 Tech Street, Digital City, DC 10101</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>TooKit</h3>
+                <p>Your one-stop destination for powerful online tools that boost productivity and simplify complex tasks.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="/Tool/about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#" style="color: #1a56db;">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2023 TooKit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for table of contents links
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocLinks = document.querySelectorAll('.toc a');
+            
+            for (const link of tocLinks) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+            
+            console.log('Privacy Policy page loaded successfully');
+        });
+    </script>
+</body>
+</html>
