@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - TooKit | Liability Limitations</title>
+    <meta name="description" content="TooKit's Disclaimer page outlines our limitations of liability regarding third-party tools, content, and services used on our website.">
+    <meta name="keywords" content="disclaimer, TooKit, liability, third-party tools, responsibility, legal">
+    <meta name="author" content="TooKit Team">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    
+    <style>
+        :root {
+            --primary-blue: #1a56db;
+            --dark-blue: #0f2e6f;
+            --black: #0a0a18;
+            --light-bg: #f5f7ff;
+            --white: #ffffff;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 10, 24, 0.8), rgba(15, 46, 111, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231a56db" width="100" height="100"/><path fill="%230a0a18" d="M0 0L100 100" stroke-width="0"/></svg>');
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Last Updated */
+        .last-updated {
+            text-align: center;
+            margin: -20px 0 30px;
+            color: var(--gray);
+            font-style: italic;
+        }
+        
+        /* Disclaimer Content */
+        .disclaimer-content {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .disclaimer-section {
+            margin-bottom: 40px;
+        }
+        
+        .disclaimer-section h2 {
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .disclaimer-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+        
+        .disclaimer-section p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .disclaimer-section ul {
+            margin: 15px 0 15px 30px;
+            color: var(--gray);
+        }
+        
+        .disclaimer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .warning {
+            background-color: rgba(219, 26, 26, 0.1);
+            border-left: 4px solid #db1a1a;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .highlight {
+            background-color: rgba(26, 86, 219, 0.1);
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* TOC Styles */
+        .toc {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .toc h3 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc ul li {
+            margin-bottom: 10px;
+        }
+        
+        .toc ul li a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .toc ul li a:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+        
+        /* AdSense Ad Unit */
+        .ad-container {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .ad-placeholder {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 90px 20px;
+            border-radius: 6px;
+            margin: 0 auto;
+            max-width: 728px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1 1 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-blue);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .disclaimer-content {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .disclaimer-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .toc {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Too<span>Kit</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="/Tool/about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Disclaimer</h1>
+            <p>Important information regarding the use of third-party tools, content, and services on TooKit.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <p class="last-updated">Last updated: September 5, 2023</p>
+        
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#general">1. General Disclaimer</a></li>
+                <li><a href="#third-party">2. Third-Party Tools & Services</a></li>
+                <li><a href="#external-links">3. External Links</a></li>
+                <li><a href="#affiliate">4. Affiliate Disclaimer</a></li>
+                <li><a href="#professional">5. Professional Advice</a></li>
+                <li><a href="#fair-use">6. Fair Use Notice</a></li>
+                <li><a href="#errors">7. Errors and Omissions</a></li>
+                <li><a href="#views">8. Views Expressed</a></li>
+                <li><a href="#consent">9. Consent</a></li>
+                <li><a href="#contact">10. Contact Us</a></li>
+            </ul>
+        </div>
+        
+        <!-- AdSense Ad Unit -->
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Replace this with your AdSense code -->
+                AdSense Ad Unit (Responsive)
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- Disclaimer Content -->
+        <div class="disclaimer-content">
+            <section id="general" class="disclaimer-section">
+                <h2>1. General Disclaimer</h2>
+                <p>The information contained on the TooKit website is for general information purposes only. While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.</p>
+                
+                <div class="warning">
+                    <p>Any reliance you place on such information is therefore strictly at your own risk. In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.</p>
+                </div>
+            </section>
+            
+            <section id="third-party" class="disclaimer-section">
+                <h2>2. Third-Party Tools & Services</h2>
+                <p>TooKit may integrate, utilize, or provide access to various third-party tools, services, APIs, software, or content. These include but are not limited to:</p>
+                
+                <ul>
+                    <li>Browser-based tools and utilities</li>
+                    <li>Data processing services</li>
+                    <li>Conversion tools and calculators</li>
+                    <li>Content delivery networks</li>
+                    <li>Analytics and tracking services</li>
+                    <li>Advertising networks (including Google AdSense)</li>
+                </ul>
+                
+                <p>We do not control, and are not responsible for, the operation, availability, or content of these third-party services. Your use of any third-party tools or services is subject to their respective terms and conditions and privacy policies.</p>
+                
+                <div class="highlight">
+                    <p>TooKit shall not be held liable for any issues, damages, or losses resulting from the use of third-party tools, services, or content available through our website.</p>
+                </div>
+            </section>
+            
+            <section id="external-links" class="disclaimer-section">
+                <h2>3. External Links</h2>
+                <p>Through this website, you are able to link to other websites which are not under the control of TooKit. We have no control over the nature, content, and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.</p>
+                
+                <p>Every effort is made to keep the website up and running smoothly. However, TooKit takes no responsibility for, and will not be liable for, the website being temporarily unavailable due to technical issues beyond our control.</p>
+            </section>
+            
+            <section id="affiliate" class="disclaimer-section">
+                <h2>4. Affiliate Disclaimer</h2>
+                <p>Some of the links on TooKit may be affiliate links. This means if you click on the link and purchase the item, we may receive an affiliate commission at no extra cost to you.</p>
+                
+                <p>We only recommend products or services that we believe will add value to our users. All opinions expressed on this website are our own, and any product claim, statistic, quote, or other representation about a product or service should be verified with the manufacturer, provider, or party in question.</p>
+            </section>
+            
+            <section id="professional" class="disclaimer-section">
+                <h2>5. Professional Advice</h2>
+                <p>The information provided on TooKit is not intended as professional advice of any kind. The content on this website should not be used as a substitute for professional advice from a qualified professional in the relevant field.</p>
+                
+                <div class="warning">
+                    <p>For specific advice related to your situation, please consult with an appropriate professional. Never disregard professional advice or delay in seeking it because of something you have read on this website.</p>
+                </div>
+            </section>
+            
+            <section id="fair-use" class="disclaimer-section">
+                <h2>6. Fair Use Notice</h2>
+                <p>This website may contain copyrighted material the use of which has not always been specifically authorized by the copyright owner. We are making such material available in our efforts to advance understanding of various issues.</p>
+                
+                <p>We believe this constitutes a "fair use" of any such copyrighted material as provided for in section 107 of the US Copyright Law. If you wish to use copyrighted material from this site for purposes of your own that go beyond fair use, you must obtain permission from the copyright owner.</p>
+            </section>
+            
+            <section id="errors" class="disclaimer-section">
+                <h2>7. Errors and Omissions</h2>
+                <p>While we have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, TooKit is not responsible for any errors or omissions, or for the results obtained from the use of this information.</p>
+                
+                <p>All information in this site is provided "as is", with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, and without warranty of any kind, express or implied, including, but not limited to warranties of performance, merchantability, and fitness for a particular purpose.</p>
+            </section>
+            
+            <section id="views" class="disclaimer-section">
+                <h2>8. Views Expressed</h2>
+                <p>The views and opinions expressed on this website are those of the authors and do not necessarily reflect the official policy or position of any other agency, organization, employer, or company, including TooKit.</p>
+                
+                <p>Comments published by users are their sole responsibility and the users will take full responsibility, liability, and blame for any libel or litigation that results from something written in or as a direct result of something written in a comment.</p>
+            </section>
+            
+            <section id="consent" class="disclaimer-section">
+                <h2>9. Consent</h2>
+                <p>By using our website, you hereby consent to our disclaimer and agree to its terms.</p>
+                
+                <div class="highlight">
+                    <p>Should we update, amend, or make any changes to this document, those changes will be prominently posted here.</p>
+                </div>
+            </section>
+            
+            <section id="contact" class="disclaimer-section">
+                <h2>10. Contact Us</h2>
+                <p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at <a href="mailto:legal@tookit.com">legal@tookit.com</a>.</p>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>TooKit</h3>
+                <p>Your one-stop destination for powerful online tools that boost productivity and simplify complex tasks.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="/Tool/about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#" style="color: #1a56db;">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2023 TooKit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for table of contents links
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocLinks = document.querySelectorAll('.toc a');
+            
+            for (const link of tocLinks) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+            
+            console.log('Disclaimer page loaded successfully');
+        });
+    </script>
+</body>
+</html>
