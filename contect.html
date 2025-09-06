@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TooKit | Get in Touch</title>
+    <meta name="description" content="Contact TooKit team for support, questions, or feedback. We're here to help you with our tools and services.">
+    <meta name="keywords" content="contact TooKit, tool website, support, feedback, questions">
+    <meta name="author" content="TooKit Team">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+    
+    <style>
+        :root {
+            --primary-blue: #1a56db;
+            --dark-blue: #0f2e6f;
+            --black: #0a0a18;
+            --light-bg: #f5f7ff;
+            --white: #ffffff;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 10, 24, 0.8), rgba(15, 46, 111, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231a56db" width="100" height="100"/><path fill="%230a0a18" d="M0 0L100 100" stroke-width="0"/></svg>');
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Content */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-info {
+            flex: 1 1 300px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form {
+            flex: 1 1 500px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .info-icon {
+            background: var(--dark-blue);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .info-details h3 {
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+        
+        .info-details p {
+            color: var(--gray);
+        }
+        
+        .info-details a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .info-details a:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-blue);
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-blue);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+        
+        /* Map Section */
+        .map-section {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+        
+        .map-placeholder {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 150px 20px;
+            border-radius: 6px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* AdSense Ad Unit */
+        .ad-container {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .ad-placeholder {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 90px 20px;
+            border-radius: 6px;
+            margin: 0 auto;
+            max-width: 728px;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1 1 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-blue);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Too<span>Kit</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="/Tool/about.html">About Us</a></li>
+                    <li><a href="#" style="color: #1a56db;">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Contact TooKit</h1>
+            <p>We'd love to hear from you! Get in touch with our team for support, questions, or feedback.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="contact-content">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2 class="section-title">Get in Touch</h2>
+                <p>Have questions about our tools or need support? Reach out to us through any of the following channels:</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i>✉</i>
+                    </div>
+                    <div class="info-details">
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:john502@gmail.com">john502@gmail.com</a></p>
+                        <p>We'll respond within 24 hours</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i>📞</i>
+                    </div>
+                    <div class="info-details">
+                        <h3>Call Us</h3>
+                        <p><a href="tel:+11234567890">+1 (123) 456-7890</a></p>
+                        <p>Mon-Fri, 9am-5pm EST</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i>📍</i>
+                    </div>
+                    <div class="info-details">
+                        <h3>Visit Us</h3>
+                        <p>123 Tech Street</p>
+                        <p>Digital City, DC 10101</p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 30px; color: var(--dark-blue);">Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">ƒ</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2 class="section-title">Send a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" placeholder="What is this regarding?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" class="form-control" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- AdSense Ad Unit -->
+        <div class="ad-container">
+            <div class="ad-placeholder">
+                <!-- Replace this with your AdSense code -->
+                AdSense Ad Unit (Responsive)
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                     data-ad-slot="XXXXXXXXXX"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2 class="section-title">Our Location</h2>
+            <p>Visit our office during business hours for in-person support.</p>
+            <div class="map-placeholder">
+                Interactive Map Location
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>TooKit</h3>
+                <p>Your one-stop destination for powerful online tools that boost productivity and simplify complex tasks.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="/Tool/about.html">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2023 TooKit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Here you would normally send the form data to a server
+                    // For this example, we'll just show an alert
+                    alert(`Thank you ${name}! Your message has been received. We'll contact you at ${email} soon.`);
+                    
+                    // Reset the form
+                    contactForm.reset();
+                });
+            }
+            
+            console.log('Contact page loaded successfully');
+        });
+    </script>
+</body>
+</html>
