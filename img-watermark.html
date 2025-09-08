@@ -122,6 +122,25 @@
             font-size: 0.9rem;
         }
         
+        /* Ad container styling */
+        .header-ad {
+            width: 100%;
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: var(--secondary-dark);
+            border-radius: 8px;
+        }
+
+        .horizontal-native, .square-native, .vertical-native {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
         .upload-container {
             border: 2px dashed var(--accent-purple);
             border-radius: 10px;
@@ -392,6 +411,17 @@
                 flex: 1 1 200px;
             }
             
+            .header-ad {
+                display: none; /* Hide leaderboard on mobile */
+            }
+            
+            .horizontal-native, .square-native, .vertical-native {
+                min-height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
             header h1 {
                 font-size: 1.8rem;
             }
@@ -520,15 +550,19 @@
 </div>
 <!-- Navbar End -->
 
-<!-- Script -->
-<script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
-
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
+        <!-- Leaderboard Ad (728x90) -->
+        <div class="header-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+        </div>
 
         <header>
             <h1>Watermark Adder Tool</h1>
@@ -537,6 +571,12 @@
         
         <div class="breadcrumb">
             <a href="#">Home</a> > <a href="#">Image Tools</a> > Watermark Adder
+        </div>
+        
+        <!-- Horizontal Native Ad (2:1) -->
+        <div class="horizontal-native">
+            <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+            <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
         </div>
         
         <div class="main-content">
@@ -638,30 +678,16 @@
             </section>
             
             <section class="ad-section">
-                <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                <!-- Square Native Ad (1:1) -->
+                <div class="square-native">
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
                 
-                <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="0987654321"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                <!-- Square Native Ad (1:1) -->
+                <div class="square-native">
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
             </section>
         </div>
@@ -674,6 +700,12 @@
             
             <p>Best practices for watermarking include placing your watermark in a visible but non-obtrusive location, using semi-transparent watermarks that don't completely obscure the image, and ensuring your watermark is consistent across all your images for brand recognition.</p>
         </section>
+        
+        <!-- Vertical Native Ad (1:2) -->
+        <div class="vertical-native">
+            <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+            <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+        </div>
         
         <footer>
             <p>&copy; 2023 ToolKit | All Rights Reserved</p>
@@ -818,122 +850,122 @@
                 
                 // Reset stats
                 originalSizeStat.textContent = '0 KB';
-                compressedSizeStat.textContent = '0 KB';
-                savingsStat.textContent = '0%';
-            });
+                           compressedSizeStat.textContent = '0 KB';
+            savingsStat.textContent = '0%';
+        });
+        
+        function applyWatermark() {
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
             
-            function applyWatermark() {
-                // Create canvas
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
+            // Set canvas dimensions
+            canvas.width = originalImage.width;
+            canvas.height = originalImage.height;
+            
+            // Draw original image on canvas
+            ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+            
+            // Prepare watermark text
+            const text = watermarkText.value || 'Your Watermark';
+            const font = `${fontSize.value}px Arial`;
+            const color = textColor.value;
+            const alpha = opacity.value / 100;
+            
+            // Set font properties
+            ctx.font = font;
+            ctx.fillStyle = color;
+            ctx.globalAlpha = alpha;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Apply watermark based on position
+            const positionValue = position.value;
+            
+            if (positionValue === 'tiled') {
+                // Tiled watermark
+                const textWidth = ctx.measureText(text).width;
+                const textHeight = parseInt(font);
+                const xSpacing = textWidth * 1.5;
+                const ySpacing = textHeight * 2;
                 
-                // Set canvas dimensions
-                canvas.width = originalImage.width;
-                canvas.height = originalImage.height;
-                
-                // Draw original image on canvas
-                ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
-                
-                // Prepare watermark text
-                const text = watermarkText.value || 'Your Watermark';
-                const font = `${fontSize.value}px Arial`;
-                const color = textColor.value;
-                const alpha = opacity.value / 100;
-                
-                // Set font properties
-                ctx.font = font;
-                ctx.fillStyle = color;
-                ctx.globalAlpha = alpha;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                
-                // Apply watermark based on position
-                const positionValue = position.value;
-                
-                if (positionValue === 'tiled') {
-                    // Tiled watermark
-                    const textWidth = ctx.measureText(text).width;
-                    const textHeight = parseInt(font);
-                    const xSpacing = textWidth * 1.5;
-                    const ySpacing = textHeight * 2;
-                    
-                    for (let x = xSpacing; x < canvas.width; x += xSpacing) {
-                        for (let y = ySpacing; y < canvas.height; y += ySpacing) {
-                            ctx.fillText(text, x, y);
-                        }
+                for (let x = xSpacing; x < canvas.width; x += xSpacing) {
+                    for (let y = ySpacing; y < canvas.height; y += ySpacing) {
+                        ctx.fillText(text, x, y);
                     }
-                } else {
-                    // Single watermark
-                    let x, y;
-                    
-                    switch(positionValue) {
-                        case 'top-left':
-                            x = canvas.width * 0.2;
-                            y = canvas.height * 0.1;
-                            ctx.textAlign = 'left';
-                            ctx.textBaseline = 'top';
-                            break;
-                        case 'top-right':
-                            x = canvas.width * 0.8;
-                            y = canvas.height * 0.1;
-                            ctx.textAlign = 'right';
-                            ctx.textBaseline = 'top';
-                            break;
-                        case 'center':
-                            x = canvas.width / 2;
-                            y = canvas.height / 2;
-                            break;
-                        case 'bottom-left':
-                            x = canvas.width * 0.2;
-                            y = canvas.height * 0.9;
-                            ctx.textAlign = 'left';
-                            ctx.textBaseline = 'bottom';
-                            break;
-                        case 'bottom-right':
-                            x = canvas.width * 0.8;
-                            y = canvas.height * 0.9;
-                            ctx.textAlign = 'right';
-                            ctx.textBaseline = 'bottom';
-                            break;
-                    }
-                    
-                    ctx.fillText(text, x, y);
+                }
+            } else {
+                // Single watermark
+                let x, y;
+                
+                switch(positionValue) {
+                    case 'top-left':
+                        x = canvas.width * 0.2;
+                        y = canvas.height * 0.1;
+                        ctx.textAlign = 'left';
+                        ctx.textBaseline = 'top';
+                        break;
+                    case 'top-right':
+                        x = canvas.width * 0.8;
+                        y = canvas.height * 0.1;
+                        ctx.textAlign = 'right';
+                        ctx.textBaseline = 'top';
+                        break;
+                    case 'center':
+                        x = canvas.width / 2;
+                        y = canvas.height / 2;
+                        break;
+                    case 'bottom-left':
+                        x = canvas.width * 0.2;
+                        y = canvas.height * 0.9;
+                        ctx.textAlign = 'left';
+                        ctx.textBaseline = 'bottom';
+                        break;
+                    case 'bottom-right':
+                        x = canvas.width * 0.8;
+                        y = canvas.height * 0.9;
+                        ctx.textAlign = 'right';
+                        ctx.textBaseline = 'bottom';
+                        break;
                 }
                 
-                // Get compression level
-                const quality = compressionLevel.value / 100;
-                
-                // Convert canvas to blob with compression
-                canvas.toBlob(function(blob) {
-                    // Create and display watermarked image
-                    const watermarkedUrl = URL.createObjectURL(blob);
-                    watermarkedImageBlob = blob;
-                    
-                    const imgElement = document.createElement('img');
-                    imgElement.src = watermarkedUrl;
-                    imgElement.classList.add('preview-img');
-                    watermarkedPreview.innerHTML = '';
-                    watermarkedPreview.appendChild(imgElement);
-                    
-                    // Update file info
-                    const fileSize = (blob.size / 1024).toFixed(2);
-                    watermarkedInfo.textContent = `Size: ${fileSize} KB | Dimensions: ${originalImage.width}x${originalImage.height}`;
-                    compressedSizeStat.textContent = `${fileSize} KB`;
-                    
-                    // Calculate savings
-                    const savings = (100 - (blob.size / originalImageSize) * 100).toFixed(1);
-                    watermarkedInfo.textContent += ` | Reduced by: ${savings}%`;
-                    savingsStat.textContent = `${savings}%`;
-                    
-                    // Enable download button
-                    downloadBtn.disabled = false;
-                    
-                    // Reset apply button
-                    applyWatermarkBtn.disabled = false;
-                    applyWatermarkBtn.classList.remove('processing');
-                }, 'image/jpeg', quality);
+                ctx.fillText(text, x, y);
             }
-        });
-    </script>
+            
+            // Get compression level
+            const quality = compressionLevel.value / 100;
+            
+            // Convert canvas to blob with compression
+            canvas.toBlob(function(blob) {
+                // Create and display watermarked image
+                const watermarkedUrl = URL.createObjectURL(blob);
+                watermarkedImageBlob = blob;
+                
+                const imgElement = document.createElement('img');
+                imgElement.src = watermarkedUrl;
+                imgElement.classList.add('preview-img');
+                watermarkedPreview.innerHTML = '';
+                watermarkedPreview.appendChild(imgElement);
+                
+                // Update file info
+                const fileSize = (blob.size / 1024).toFixed(2);
+                watermarkedInfo.textContent = `Size: ${fileSize} KB | Dimensions: ${originalImage.width}x${originalImage.height}`;
+                compressedSizeStat.textContent = `${fileSize} KB`;
+                
+                // Calculate savings
+                const savings = (100 - (blob.size / originalImageSize) * 100).toFixed(1);
+                watermarkedInfo.textContent += ` | Reduced by: ${savings}%`;
+                savingsStat.textContent = `${savings}%`;
+                
+                // Enable download button
+                downloadBtn.disabled = false;
+                
+                // Reset apply button
+                applyWatermarkBtn.disabled = false;
+                applyWatermarkBtn.classList.remove('processing');
+            }, 'image/jpeg', quality);
+        }
+    });
+</script>
 </body>
 </html>
