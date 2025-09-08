@@ -51,6 +51,7 @@
             padding: 30px;
             text-align: center;
             border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+            position: relative;
         }
         
         header h1 {
@@ -99,11 +100,24 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
         }
         
         .ad-unit p {
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+        
+        .header-ad {
+            width: 728px;
+            height: 90px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary-dark);
+            border-radius: 8px;
+            overflow: hidden;
         }
         
         .upload-container {
@@ -347,6 +361,25 @@
             gap: 8px;
         }
         
+        /* Mobile ad styling */
+        .mobile-ad {
+            display: none;
+            width: 100%;
+            margin: 15px 0;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        /* Ad label styling */
+        .ad-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
@@ -359,6 +392,12 @@
             
             .ad-unit {
                 flex: 1 1 200px;
+            }
+            
+            .header-ad {
+                width: 100%;
+                height: auto;
+                min-height: 90px;
             }
             
             header h1 {
@@ -380,6 +419,16 @@
             .meme-controls {
                 grid-template-columns: 1fr;
             }
+            
+            /* Show mobile ads on smaller screens */
+            .mobile-ad {
+                display: flex;
+            }
+            
+            /* Hide desktop leaderboard on mobile */
+            .desktop-ad {
+                display: none;
+            }
         }
         
         @media (max-width: 480px) {
@@ -392,6 +441,10 @@
             }
             
             .color-group {
+                flex-direction: column;
+            }
+            
+            .ad-section {
                 flex-direction: column;
             }
         }
@@ -527,19 +580,39 @@
 </div>
 <!-- Navbar End -->
 
-<!-- Script -->
-<script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
-
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
-
         <header>
             <h1>MemeGen Pro</h1>
             <p>Create, customize, and optimize memes with our all-in-one tool</p>
+            
+            <!-- Leaderboard Banner Ad (728x90) -->
+            <div class="header-ad desktop-ad">
+                <div class="ad-label">Advertisement</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
+            
+            <!-- Mobile Leaderboard Banner (320x50) -->
+            <div class="mobile-ad">
+                <div class="ad-label">Advertisement</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
         </header>
         
         <div class="main-content">
@@ -640,33 +713,35 @@
                     <button class="btn btn-outline" id="downloadBtn" disabled><i class="fas fa-download"></i> Download</button>
                     <button class="btn btn-outline" id="resetBtn"><i class="fas fa-redo"></i> Reset</button>
                 </div>
+                
+                <!-- In-content ad placement -->
+                <div class="mobile-ad" style="margin: 30px 0;">
+                    <div class="ad-label">Advertisement</div>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
             </section>
             
             <section class="ad-section">
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Native Banner 2:1 Horizontal -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
                 
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="0987654321"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Native Banner 1:2 Vertical -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+                
+                <div class="ad-unit">
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Native Banner 1:1 Square -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
             </section>
         </div>
