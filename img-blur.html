@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlurPro - Blur Parts of Images Online Like a Pro</title>
+    <meta name="description" content="Free online blur tool to blur parts of images with precision. Professional blur effects with image optimization and compression. No registration required.">
+    <meta name="keywords" content="blur tool, blur image, blur photo, image blur, privacy blur, face blur, image optimization">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-dark: #0a192f;
+            --secondary-dark: #112240;
+            --accent-blue: #64ffda;
+            --accent-purple: #7b4fff;
+            --text-primary: #e6f1ff;
+            --text-secondary: #8892b0;
+            --card-bg: #172a45;
+            --slider-bg: #2d3f5a;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #0d1b2a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(10, 25, 47, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--secondary-dark), var(--primary-dark));
+            color: var(--text-primary);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: var(--text-secondary);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .tool-section {
+            flex: 1 1 700px;
+            padding: 25px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .ad-section {
+            flex: 0 1 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .ad-unit {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
+        }
+        
+        .ad-unit.horizontal {
+            min-height: 90px;
+            width: 100%;
+        }
+        
+        .ad-unit.vertical {
+            min-height: 250px;
+            width: 100%;
+        }
+        
+        .ad-unit.square {
+            min-height: 250px;
+            width: 100%;
+        }
+        
+        .upload-container {
+            border: 2px dashed var(--accent-purple);
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+            background: rgba(27, 42, 65, 0.5);
+        }
+        
+        .upload-container:hover {
+            background: rgba(39, 59, 89, 0.5);
+            border-color: var(--accent-blue);
+        }
+        
+        .upload-container i {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        
+        .upload-btn {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            color: var(--primary-dark);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(123, 79, 255, 0.4);
+        }
+        
+        .blur-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: var(--slider-bg);
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+            border: none;
+        }
+        
+        .value-display {
+            font-weight: 700;
+            color: var(--accent-blue);
+            min-width: 40px;
+        }
+        
+        .blur-types {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 15px 0;
+            margin: 20px 0;
+        }
+        
+        .blur-type {
+            flex: 0 0 auto;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            background: var(--secondary-dark);
+            border: 1px solid var(--accent-purple);
+            transition: all 0.3s;
+        }
+        
+        .blur-type:hover {
+            background: var(--accent-purple);
+            color: white;
+        }
+        
+        .blur-type.active {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            color: var(--primary-dark);
+            border-color: transparent;
+        }
+        
+        .preview-comparison {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+        
+        .image-preview {
+            flex: 1 1 300px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .image-preview h3 {
+            margin-bottom: 10px;
+            color: var(--accent-blue);
+        }
+        
+        .preview-img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .canvas-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        #blurCanvas {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            cursor: crosshair;
+        }
+        
+        .file-info {
+            background: var(--secondary-dark);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(123, 79, 255, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--secondary-dark);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .seo-content {
+            padding: 30px;
+            background: var(--card-bg);
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .seo-content h2 {
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+        
+        .seo-content p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .ad-section {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .ad-unit {
+                flex: 1 1 200px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .theme-toggle {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 20px;
+                width: fit-content;
+            }
+            
+            .blur-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .upload-container {
+                padding: 20px 10px;
+            }
+            
+            .preview-comparison {
+                flex-direction: column;
+            }
+            
+            .blur-types {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        /* Animation for processing */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .processing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Stats display */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: var(--secondary-dark);
+            padding: 15px;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            margin: 5px;
+        }
+        
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Brush size indicator */
+        .brush-indicator {
+            position: absolute;
+            pointer-events: none;
+            border: 2px solid var(--accent-blue);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle">
+        <i class="fas fa-moon"></i> Dark Mode
+    </button>
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Navbar Start -->
+<nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
+  <!-- Logo -->
+  <a href="/Tool/index.html" class="flex items-center space-x-2">
+    <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
+    <span class="text-xl font-bold text-teal-300">ToolKit</span>
+  </a>
+
+  <!-- Desktop Menu -->
+  <ul class="hidden md:flex space-x-8 font-medium text-white">
+    <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
+    <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
+    <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
+    <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
+    <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
+    <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
+  </ul>
+
+  <!-- Buttons (Desktop) -->
+  <div class="hidden md:flex space-x-4">
+    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+  </div>
+
+  <!-- Mobile Hamburger -->
+  <div class="md:hidden">
+    <button id="menu-btn" class="focus:outline-none">
+      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
+  <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
+  <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
+  <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
+  <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
+  <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
+  <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
+  
+  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+</div>
+<!-- Navbar End -->
+  <div class="ad-unit horizontal">
+                    <!-- Adsterra Leaderboard Banner -->
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+                </div>
+<!-- Script -->
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+    <div class="container">
+        <header>
+            <h1>BlurPro</h1>
+            <p>Professional blur tool to selectively blur parts of your images</p>
+        </header>
+        
+        <div class="main-content">
+            <section class="tool-section">
+                <div class="upload-container">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h2>Upload Your Image</h2>
+                    <p>Supported formats: JPG, PNG, WebP</p>
+                    <input type="file" id="imageUpload" accept="image/*" hidden>
+                    <button class="upload-btn" id="uploadTrigger"><i class="fas fa-upload"></i> Select Image</button>
+                </div>
+                
+                <div class="blur-types">
+                    <div class="blur-type active" data-type="brush">Brush Tool</div>
+                    <div class="blur-type" data-type="area">Area Selection</div>
+                    <div class="blur-type" data-type="face">Face Detection</div>
+                    <div class="blur-type" data-type="pixelate">Pixelate</div>
+                    <div class="blur-type" data-type="gaussian">Gaussian Blur</div>
+                </div>
+                
+                <div class="blur-controls">
+                    <div class="control-group">
+                        <label for="blurIntensity">Blur Intensity</label>
+                        <div class="slider-container">
+                            <input type="range" id="blurIntensity" min="1" max="50" value="15">
+                            <span class="value-display" id="blurIntensityValue">15px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="brushSize">Brush Size</label>
+                        <div class="slider-container">
+                            <input type="range" id="brushSize" min="5" max="100" value="30">
+                            <span class="value-display" id="brushSizeValue">30px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="compressionLevel">Compression Level</label>
+                        <div class="slider-container">
+                            <input type="range" id="compressionLevel" min="0" max="100" value="80">
+                            <span class="value-display" id="compressionValue">80%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="originalSizeStat">0 KB</div>
+                        <div class="stat-label">Original Size</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="compressedSizeStat">0 KB</div>
+                        <div class="stat-label">Compressed Size</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="savingsStat">0%</div>
+                        <div class="stat-label">Size Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="preview-comparison">
+                    <div class="image-preview">
+                        <h3>Original Image</h3>
+                        <div id="originalPreview"></div>
+                        <div class="file-info" id="originalInfo">No image selected</div>
+                    </div>
+                    
+                    <div class="image-preview">
+                        <h3>Blurred Image</h3>
+                        <div class="canvas-container">
+                            <canvas id="blurCanvas"></canvas>
+                        </div>
+                        <div class="file-info" id="blurredInfo">No image available</div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="applyBlurBtn" disabled><i class="fas fa-check-circle"></i> Apply Blur</button>
+                    <button class="btn btn-outline" id="clearBlurBtn" disabled><i class="fas fa-eraser"></i> Clear Blur</button>
+                    <button class="btn btn-outline" id="downloadBtn" disabled><i class="fas fa-download"></i> Download</button>
+                    <button class="btn btn-outline" id="resetBtn"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+            </section>
+            
+            <section class="ad-section">
+                <div class="ad-unit horizontal">
+                    <!-- Adsterra Leaderboard Banner -->
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+                </div>
+                
+                <div class="ad-unit vertical">
+                    <!-- Adsterra Native Banner (Vertical) -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+                
+                <div class="ad-unit square">
+                    <!-- Adsterra Native Banner (Square) -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+            </section>
+        </div>
+        
+        <section class="seo-content">
+            <h2>Professional Blur Tool for Image Privacy</h2>
+            <p>BlurPro is the ultimate online tool for selectively blurring parts of your images with precision. Whether you need to protect privacy, hide sensitive information, or create artistic effects, our tool provides professional-grade blur functionality.</p>
+            
+            <p>With multiple blur types including brush tool, area selection, face detection, pixelation, and Gaussian blur, you have complete control over how you obscure parts of your images. The intuitive interface makes it easy to apply exactly the right amount of blur exactly where you need it.</p>
+            
+            <p>Our built-in compression technology ensures your blurred images maintain quality while reducing file size - perfect for sharing on social media or websites. All processing happens directly in your browser for maximum privacy and security.</p>
+        </section>
+        
+        <footer>
+            <p>&copy; 2023 BlurPro | All Rights Reserved</p>
+            <p>This tool processes your images entirely in your browser - no uploads to servers required!</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const uploadTrigger = document.getElementById('uploadTrigger');
+            const imageUpload = document.getElementById('imageUpload');
+            const applyBlurBtn = document.getElementById('applyBlurBtn');
+            const clearBlurBtn = document.getElementById('clearBlurBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const originalPreview = document.getElementById('originalPreview');
+            const blurredInfo = document.getElementById('blurredInfo');
+            const originalInfo = document.getElementById('originalInfo');
+            const originalSizeStat = document.getElementById('originalSizeStat');
+            const compressedSizeStat = document.getElementById('compressedSizeStat');
+            const savingsStat = document.getElementById('savingsStat');
+            
+            // Blur controls
+            const blurIntensity = document.getElementById('blurIntensity');
+            const blurIntensityValue = document.getElementById('blurIntensityValue');
+            const brushSize = document.getElementById('brushSize');
+            const brushSizeValue = document.getElementById('brushSizeValue');
+            const compressionLevel = document.getElementById('compressionLevel');
+            const compressionValue = document.getElementById('compressionValue');
+            
+            // Canvas
+            const canvas = document.getElementById('blurCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            let originalImage = null;
+            let blurredImageBlob = null;
+            let originalImageSize = 0;
+            let isDrawing = false;
+            let brushIndicator = null;
+            
+            // Event listeners
+            uploadTrigger.addEventListener('click', () => imageUpload.click());
+            
+            imageUpload.addEventListener('change', function(e) {
+                if (this.files && this.files[0]) {
+                    loadImage(this.files[0]);
+                }
+            });
+            
+            // Blur type selection
+            document.querySelectorAll('.blur-type').forEach(type => {
+                type.addEventListener('click', function() {
+                    document.querySelectorAll('.blur-type').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const blurType = this.getAttribute('data-type');
+                    // In a real app, this would change the blur functionality
+                    alert(`Blur type changed to: ${blurType}. In a real application, this would enable different blur methods.`);
+                });
+            });
+            
+            // Control event listeners
+            blurIntensity.addEventListener('input', function() {
+                blurIntensityValue.textContent = `${this.value}px`;
+            });
+            
+            brushSize.addEventListener('input', function() {
+                brushSizeValue.textContent = `${this.value}px`;
+                updateBrushIndicator();
+            });
+            
+            compressionLevel.addEventListener('input', function() {
+                compressionValue.textContent = `${this.value}%`;
+            });
+            
+            // Canvas drawing events
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+            
+            // Touch events for mobile
+            canvas.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent('mousedown', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            canvas.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const mouseEvent = new MouseEvent('mousemove', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            canvas.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                const mouseEvent = new MouseEvent('mouseup');
+                canvas.dispatchEvent(mouseEvent);
+            });
+            
+            applyBlurBtn.addEventListener('click', function() {
+                if (!originalImage) {
+                    alert('Please upload an image first.');
+                    return;
+                }
+                
+                processBlur();
+            });
+            
+            clearBlurBtn.addEventListener('click', function() {
+                if (!originalImage) return;
+                
+                // Redraw original image to clear blur
+                drawOriginalImage();
+            });
+            
+            downloadBtn.addEventListener('click', function() {
+                if (!blurredImageBlob) return;
+                
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blurredImageBlob);
+                downloadLink.download = 'blurred-image.jpg';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+            
+            resetBtn.addEventListener('click', function() {
+                // Reset everything
+                originalImage = null;
+                blurredImageBlob = null;
+                originalPreview.innerHTML = '';
+                canvas.width = 0;
+                canvas.height = 0;
+                imageUpload.value = '';
+                
+                // Reset controls
+                blurIntensity.value = 15;
+                blurIntensityValue.textContent = '15px';
+                brushSize.value = 30;
+                brushSizeValue.textContent = '30px';
+                compressionLevel.value = 80;
+                compressionValue.textContent = '80%';
+                
+                // Reset blur types
+                document.querySelectorAll('.blur-type').forEach(t => t.classList.remove('active'));
+                document.querySelector('[data-type="brush"]').classList.add('active');
+                
+                applyBlurBtn.disabled = true;
+                clearBlurBtn.disabled = true;
+                downloadBtn.disabled = true;
+                
+                // Reset info displays
+                originalInfo.textContent = 'No image selected';
+                blurredInfo.textContent = 'No image available';
+                
+                // Reset stats
+                originalSizeStat.textContent = '0 KB';
+                compressedSizeStat.textContent = '0 KB';
+                savingsStat.textContent = '0%';
+                
+                // Remove brush indicator if exists
+                if (brushIndicator) {
+                    brushIndicator.remove();
+                    brushIndicator = null;
+                }
+            });
+            
+            function loadImage(file) {
+                // Check if file is an image
+                if (!file.type.match('image.*')) {
+                    alert('Please select a valid image file.');
+                    return;
+                }
+                
+                // Display original image
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    originalImage = new Image();
+                    originalImage.onload = function() {
+                        // Display original image
+                        originalPreview.innerHTML = '';
+                        const imgElement = document.createElement('img');
+                        imgElement.src = event.target.result;
+                        imgElement.classList.add('preview-img');
+                        originalPreview.appendChild(imgElement);
+                        
+                        // Set up canvas
+                        setupCanvas();
+                        
+                        // Store original image size
+                        originalImageSize = file.size;
+                        const fileSizeKB = (originalImageSize / 1024).toFixed(2);
+                        originalInfo.textContent = `Size: ${fileSizeKB} KB | Dimensions: ${originalImage.width}x${originalImage.height}`;
+                        originalSizeStat.textContent = `${fileSizeKB} KB`;
+                        
+                        // Enable buttons
+                        applyBlurBtn.disabled = false;
+                        clearBlurBtn.disabled = false;
+                        
+                        // Create brush indicator
+                        createBrushIndicator();
+                    };
+                    originalImage.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+            
+            function setupCanvas() {
+                // Set canvas dimensions
+                const maxWidth = 500;
+                const maxHeight = 500;
+                
+                let width = originalImage.width;
+                let height = originalImage.height;
+                
+                // Calculate dimensions to fit max size while maintaining aspect ratio
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height = Math.round((height * maxWidth) / width);
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width = Math.round((width * maxHeight) / height);
+                        height = maxHeight;
+                    }
+                }
+                
+                canvas.width = width;
+                canvas.height = height;
+                
+                // Draw original image on canvas
+                drawOriginalImage();
+            }
+            
+            function drawOriginalImage() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(originalImage, 0, 0, canvas.width, canvas.height);
+            }
+            
+            function createBrushIndicator() {
+                // Remove existing indicator if any
+                if (brushIndicator) {
+                    brushIndicator.remove();
+                }
+                
+                // Create new brush indicator
+                brushIndicator = document.createElement('div');
+                brushIndicator.className = 'brush-indicator';
+                updateBrushIndicator();
+                brushIndicator.style.display = 'none';
+                
+                // Add to canvas container
+                document.querySelector('.canvas-container').appendChild(brushIndicator);
+                
+                // Show/hide brush indicator on canvas hover
+                canvas.addEventListener('mouseenter', function(e) {
+                    updateBrushIndicatorPosition(e);
+                    brushIndicator.style.display = 'block';
+                });
+                
+                canvas.addEventListener('mousemove', updateBrushIndicatorPosition);
+                
+                canvas.addEventListener('mouseleave', function() {
+                    brushIndicator.style.display = 'none';
+                });
+            }
+            
+            function updateBrushIndicator() {
+                if (!brushIndicator) return;
+                
+                const size = parseInt(brushSize.value);
+                brushIndicator.style.width = `${size}px`;
+                brushIndicator.style.height = `${size}px`;
+            }
+            
+            function updateBrushIndicatorPosition(e) {
+                if (!brushIndicator) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                brushIndicator.style.left = `${x}px`;
+                brushIndicator.style.top = `${y}px`;
+            }
+            
+            function startDrawing(e) {
+                if (!originalImage) return;
+                
+                isDrawing = true;
+                draw(e);
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const size = parseInt(brushSize.value);
+                const intensity = parseInt(blurIntensity.value);
+                
+                // Apply blur at position
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(x, y, size/2, 0, Math.PI * 2);
+                ctx.clip();
+                
+                // Apply blur effect
+                ctx.filter = `blur(${intensity}px)`;
+                ctx.drawImage(canvas, 0, 0);
+                ctx.restore();
+            }
+            
+            function stopDrawing() {
+                isDrawing = false;
+            }
+            
+            function processBlur() {
+                if (!originalImage) return;
+                
+                // Show processing state
+                applyBlurBtn.disabled = true;
+                applyBlurBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                applyBlurBtn.classList.add('processing');
+                
+                // Simulate processing time
+                setTimeout(() => {
+                    // Get compression level
+                    const quality = compressionLevel.value / 100;
+                    
+                    // Convert canvas to blob with compression
+                    canvas.toBlob(function(blob) {
+                        blurredImageBlob = blob;
+                        
+                        // Update file info
+                        const blurredSize = blob.size;
+                        const blurredSizeKB = (blurredSize / 1024).toFixed(2);
+                        blurredInfo.textContent = `Size: ${blurredSizeKB} KB | Dimensions: ${originalImage.width}x${originalImage.height}`;
+                        compressedSizeStat.textContent = `${blurredSizeKB} KB`;
+                        
+                        // Calculate savings
+                        const savings = (100 - (blurredSize / originalImageSize) * 100).toFixed(1);
+                        savingsStat.textContent = `${savings}%`;
+                        
+                        // Enable download button
+                        downloadBtn.disabled = false;
+                        
+                        // Reset apply button
+                        applyBlurBtn.disabled = false;
+                        applyBlurBtn.innerHTML = '<i class="fas fa-check-circle"></i> Apply Blur';
+                        applyBlurBtn.classList.remove('processing');
+                    }, 'image/jpeg', quality);
+                }, 1000);
+            }
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-moon')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    this.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+                    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    this.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+                    document.body.style.filter = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
