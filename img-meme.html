@@ -101,6 +101,7 @@
             justify-content: center;
             border: 1px solid rgba(100, 255, 218, 0.2);
             overflow: hidden;
+            flex-direction: column;
         }
         
         .ad-unit p {
@@ -118,6 +119,7 @@
             background: var(--secondary-dark);
             border-radius: 8px;
             overflow: hidden;
+            flex-direction: column;
         }
         
         .upload-container {
@@ -368,6 +370,7 @@
             margin: 15px 0;
             text-align: center;
             justify-content: center;
+            flex-direction: column;
         }
         
         /* Ad label styling */
@@ -378,6 +381,37 @@
             margin-bottom: 5px;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+        
+        /* Sticky ad styling */
+        .sticky-ad {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--secondary-dark);
+            z-index: 1000;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .sticky-ad .ad-container {
+            width: 728px;
+            height: 90px;
+        }
+        
+        .close-ad {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
         }
         
         @media (max-width: 768px) {
@@ -428,6 +462,12 @@
             /* Hide desktop leaderboard on mobile */
             .desktop-ad {
                 display: none;
+            }
+            
+            /* Adjust sticky ad for mobile */
+            .sticky-ad .ad-container {
+                width: 320px;
+                height: 50px;
             }
         }
         
@@ -525,6 +565,24 @@
     <button class="theme-toggle">
         <i class="fas fa-moon"></i> Dark Mode
     </button>
+
+    <!-- Sticky Bottom Banner Ad -->
+    <div class="sticky-ad" id="stickyAd">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+        </div>
+        <button class="close-ad" onclick="document.getElementById('stickyAd').style.display='none'">×</button>
+    </div>
 
     <div class="container">
         <!-- Tailwind CDN -->
@@ -625,6 +683,13 @@
                     <button class="upload-btn" id="uploadTrigger"><i class="fas fa-upload"></i> Select Image</button>
                 </div>
                 
+                <!-- In-content ad placement -->
+                <div class="mobile-ad" style="margin: 20px 0;">
+                    <div class="ad-label">Advertisement</div>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+                
                 <div class="templates">
                     <div class="template" data-template="1"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><rect width='120' height='120' fill='%23333'/><text x='60' y='55' font-family='Arial' font-size='15' fill='white' text-anchor='middle'>Drake Template</text></svg>" alt="Drake Template"></div>
                     <div class="template" data-template="2"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><rect width='120' height='120' fill='%23333'/><text x='60' y='55' font-family='Arial' font-size='15' fill='white' text-anchor='middle'>Distracted BF</text></svg>" alt="Distracted BF"></div>
@@ -712,13 +777,6 @@
                     <button class="btn btn-primary" id="generateBtn"><i class="fas fa-magic"></i> Generate Meme</button>
                     <button class="btn btn-outline" id="downloadBtn" disabled><i class="fas fa-download"></i> Download</button>
                     <button class="btn btn-outline" id="resetBtn"><i class="fas fa-redo"></i> Reset</button>
-                </div>
-                
-                <!-- In-content ad placement -->
-                <div class="mobile-ad" style="margin: 30px 0;">
-                    <div class="ad-label">Advertisement</div>
-                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
-                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
             </section>
             
@@ -1031,7 +1089,20 @@
                     document.body.style.filter = 'none';
                 }
             });
+            
+            // Mobile menu functionality
+            const menuBtn = document.getElementById('menu-btn');
+            const menu = document.getElementById('menu');
+            
+            if (menuBtn && menu) {
+                menuBtn.addEventListener('click', function() {
+                    menu.classList.toggle('hidden');
+                });
+            }
         });
     </script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
