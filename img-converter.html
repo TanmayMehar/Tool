@@ -100,11 +100,43 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
         }
         
         .ad-unit p {
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+        
+        /* Ad container specific styles */
+        .ad-leaderboard {
+            width: 100%;
+            min-height: 90px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(23, 42, 69, 0.5);
+            border-radius: 8px;
+            padding: 10px;
+        }
+        
+        .ad-native {
+            width: 100%;
+            min-height: 250px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ad-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-align: right;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .upload-container {
@@ -365,6 +397,11 @@
             gap: 8px;
         }
         
+        /* Mobile responsive ads */
+        .mobile-ad {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
@@ -394,6 +431,15 @@
                 margin: 0 auto 20px;
                 width: fit-content;
             }
+            
+            /* Show mobile ads and hide desktop ads on mobile */
+            .mobile-ad {
+                display: block;
+            }
+            
+            .desktop-ad {
+                display: none;
+            }
         }
         
         @media (max-width: 480px) {
@@ -411,6 +457,10 @@
             
             .controls {
                 grid-template-columns: 1fr;
+            }
+            
+            .ad-section {
+                flex-direction: column;
             }
         }
         
@@ -461,70 +511,87 @@
         <i class="fas fa-moon"></i> Dark Mode
     </button>
 
-
     <div class="container">
         <!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Navbar Start -->
-<nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
-  <!-- Logo -->
-  <a href="/Tool/index.html" class="flex items-center space-x-2">
-    <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
-    <span class="text-xl font-bold text-teal-300">ToolKit</span>
-  </a>
+        <!-- Navbar Start -->
+        <nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
+            <!-- Logo -->
+            <a href="/Tool/index.html" class="flex items-center space-x-2">
+                <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
+                <span class="text-xl font-bold text-teal-300">ToolKit</span>
+            </a>
 
-  <!-- Desktop Menu -->
-  <ul class="hidden md:flex space-x-8 font-medium text-white">
-    <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
-    <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
-    <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
-    <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
-    <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
-    <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
-  </ul>
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-8 font-medium text-white">
+                <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
+                <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
+                <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
+                <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
+                <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
+                <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
+            </ul>
 
-  <!-- Buttons (Desktop) -->
-  <div class="hidden md:flex space-x-4">
-    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
-    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
-  </div>
+            <!-- Buttons (Desktop) -->
+            <div class="hidden md:flex space-x-4">
+                <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+                <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+            </div>
 
-  <!-- Mobile Hamburger -->
-  <div class="md:hidden">
-    <button id="menu-btn" class="focus:outline-none">
-      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
-           viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
-</nav>
+            <!-- Mobile Hamburger -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="focus:outline-none">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
 
-<!-- Mobile Menu -->
-<div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
-  <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
-  <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
-  <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
-  <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
-  <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
-  <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
-  
-  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
-  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
-</div>
-<!-- Navbar End -->
+        <!-- Mobile Menu -->
+        <div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
+            <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
+            <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
+            <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
+            <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
+            <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
+            <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
+            
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+        </div>
+        <!-- Navbar End -->
 
-<!-- Script -->
-<script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
+        <!-- Header Leaderboard Ad (728x90) -->
+        <div class="ad-leaderboard desktop-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            <div class="ad-label">Advertisement</div>
+        </div>
 
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
+        <!-- Mobile Leaderboard Ad (320x50) -->
+        <div class="ad-leaderboard mobile-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            <div class="ad-label">Advertisement</div>
+        </div>
 
         <header>
             <h1>Image Converter Pro</h1>
@@ -533,6 +600,13 @@
         
         <div class="main-content">
             <section class="tool-section">
+                <!-- In-content Native Ad (2:1 horizontal) -->
+                <div class="ad-native">
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                    <div class="ad-label">Advertisement</div>
+                </div>
+                
                 <div class="upload-container">
                     <i class="fas fa-file-image"></i>
                     <h2>Upload Your Image</h2>
@@ -592,30 +666,25 @@
             </section>
             
             <section class="ad-section">
+                <!-- Sidebar Native Ad (1:2 vertical) -->
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                    <div class="ad-label">Advertisement</div>
                 </div>
                 
+                <!-- Sidebar Native Ad (1:1 square) -->
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="0987654321"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                    <div class="ad-label">Advertisement</div>
+                </div>
+                
+                <!-- Sidebar Native Ad (2:1 horizontal) -->
+                <div class="ad-unit">
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                    <div class="ad-label">Advertisement</div>
                 </div>
             </section>
         </div>
@@ -648,6 +717,36 @@
             
             <p>Our converter tool allows you to easily switch between these formats while adjusting quality settings to find the perfect balance between file size and image quality for your specific needs.</p>
         </section>
+        
+        <!-- Footer Leaderboard Ad (728x90) -->
+        <div class="ad-leaderboard desktop-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            <div class="ad-label">Advertisement</div>
+        </div>
+
+        <!-- Mobile Footer Ad (320x50) -->
+        <div class="ad-leaderboard mobile-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            <div class="ad-label">Advertisement</div>
+        </div>
         
         <footer>
             <p>&copy; 2023 Image Converter Pro | All Rights Reserved</p>
