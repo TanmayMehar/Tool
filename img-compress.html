@@ -322,6 +322,33 @@
             gap: 8px;
         }
         
+        /* Ad-specific styles */
+        .header-ad {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 10px 0;
+            background: var(--secondary-dark);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .in-content-ad {
+            margin: 25px 0;
+            text-align: center;
+            padding: 15px;
+            background: var(--secondary-dark);
+            border-radius: 10px;
+        }
+        
+        .footer-ad {
+            width: 100%;
+            margin: 20px auto 0;
+            text-align: center;
+            padding: 15px;
+            background: var(--secondary-dark);
+            border-top: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
@@ -351,6 +378,15 @@
                 margin: 0 auto 20px;
                 width: fit-content;
             }
+            
+            /* Responsive ad adjustments */
+            .header-ad, .footer-ad {
+                padding: 8px 0;
+            }
+            
+            .in-content-ad {
+                margin: 15px 0;
+            }
         }
         
         @media (max-width: 480px) {
@@ -364,6 +400,10 @@
             
             .upload-container {
                 padding: 20px 10px;
+            }
+            
+            .ad-section {
+                flex-direction: column;
             }
         }
         
@@ -409,70 +449,83 @@
         <i class="fas fa-moon"></i> Dark Mode
     </button>
 
-
     <div class="container">
+        <!-- Header Ad Unit (728x90) -->
+        <div class="header-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+        </div>
+        
         <!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Navbar Start -->
-<nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
-  <!-- Logo -->
-  <a href="/Tool/index.html" class="flex items-center space-x-2">
-    <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
-    <span class="text-xl font-bold text-teal-300">ToolKit</span>
-  </a>
+        <!-- Navbar Start -->
+        <nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
+            <!-- Logo -->
+            <a href="/Tool/index.html" class="flex items-center space-x-2">
+                <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
+                <span class="text-xl font-bold text-teal-300">ToolKit</span>
+            </a>
 
-  <!-- Desktop Menu -->
-  <ul class="hidden md:flex space-x-8 font-medium text-white">
-    <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
-    <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
-    <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
-    <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
-    <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
-    <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
-  </ul>
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-8 font-medium text-white">
+                <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
+                <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
+                <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
+                <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
+                <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
+                <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
+            </ul>
 
-  <!-- Buttons (Desktop) -->
-  <div class="hidden md:flex space-x-4">
-    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
-    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
-  </div>
+            <!-- Buttons (Desktop) -->
+            <div class="hidden md:flex space-x-4">
+                <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+                <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+            </div>
 
-  <!-- Mobile Hamburger -->
-  <div class="md:hidden">
-    <button id="menu-btn" class="focus:outline-none">
-      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
-           viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
-</nav>
+            <!-- Mobile Hamburger -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="focus:outline-none">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
 
-<!-- Mobile Menu -->
-<div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
-  <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
-  <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
-  <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
-  <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
-  <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
-  <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
-  
-  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
-  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
-</div>
-<!-- Navbar End -->
+        <!-- Mobile Menu -->
+        <div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
+            <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
+            <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
+            <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
+            <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
+            <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
+            <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
+            
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+        </div>
+        <!-- Navbar End -->
 
-<!-- Script -->
-<script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
+        <!-- Script -->
+        <script>
+            const btn = document.getElementById('menu-btn');
+            const menu = document.getElementById('menu');
 
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        </script>
 
         <header>
             <h1>ImageCompress Pro</h1>
@@ -505,6 +558,12 @@
                             <span class="compression-value" id="qualityValue">85%</span>
                         </div>
                     </div>
+                </div>
+                
+                <!-- In-content Native Ad (1:2 vertical) -->
+                <div class="in-content-ad">
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
                 
                 <div class="stats">
@@ -544,32 +603,32 @@
             </section>
             
             <section class="ad-section">
+                <!-- Native Ad Unit (2:1 horizontal) -->
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
                 
+                <!-- Native Ad Unit (1:1 square) -->
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="0987654321"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
             </section>
+        </div>
+        
+        <!-- Footer Ad Unit (728x90) -->
+        <div class="footer-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
         </div>
         
         <section class="seo-content">
