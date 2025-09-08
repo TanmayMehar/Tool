@@ -100,11 +100,25 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(100, 255, 218, 0.2);
+            flex-direction: column;
         }
         
         .ad-unit p {
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+        
+        .header-ad {
+            width: 728px;
+            height: 90px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary-dark);
+            border-radius: 8px;
+            overflow: hidden;
+            flex-direction: column;
         }
         
         .upload-container {
@@ -387,6 +401,57 @@
             align-items: center;
             gap: 8px;
         }
+
+        /* Ad label styling */
+        .ad-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Mobile ad styling */
+        .mobile-ad {
+            display: none;
+            width: 100%;
+            margin: 15px 0;
+            text-align: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        /* Sticky ad styling */
+        .sticky-ad {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--secondary-dark);
+            z-index: 1000;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .sticky-ad .ad-container {
+            width: 728px;
+            height: 90px;
+        }
+        
+        .close-ad {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
         
         @media (max-width: 768px) {
             .main-content {
@@ -400,6 +465,12 @@
             
             .ad-unit {
                 flex: 1 1 200px;
+            }
+            
+            .header-ad {
+                width: 100%;
+                height: auto;
+                min-height: 90px;
             }
             
             header h1 {
@@ -423,6 +494,22 @@
                 align-items: flex-start;
                 gap: 10px;
             }
+            
+            /* Show mobile ads on smaller screens */
+            .mobile-ad {
+                display: flex;
+            }
+            
+            /* Hide desktop leaderboard on mobile */
+            .desktop-ad {
+                display: none;
+            }
+            
+            /* Adjust sticky ad for mobile */
+            .sticky-ad .ad-container {
+                width: 320px;
+                height: 50px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -440,6 +527,10 @@
             
             .controls {
                 grid-template-columns: 1fr;
+            }
+            
+            .ad-section {
+                flex-direction: column;
             }
         }
         
@@ -518,6 +609,24 @@
         <i class="fas fa-moon"></i> Dark Mode
     </button>
 
+    <!-- Sticky Bottom Banner Ad -->
+    <div class="sticky-ad" id="stickyAd">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+        </div>
+        <button class="close-ad" onclick="document.getElementById('stickyAd').style.display='none'">×</button>
+    </div>
+
     <div class="container">
         <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -585,6 +694,36 @@
         <header>
             <h1>Image Resizer Pro</h1>
             <p>Resize your images without quality loss with custom dimensions</p>
+            
+            <!-- Leaderboard Banner Ad (728x90) -->
+            <div class="header-ad desktop-ad">
+                <div class="ad-label">Advertisement</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
+            
+            <!-- Mobile Leaderboard Banner (320x50) -->
+            <div class="mobile-ad">
+                <div class="ad-label">Advertisement</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
         </header>
         
         <div class="main-content">
@@ -595,6 +734,13 @@
                     <p>Supported formats: <span class="format-badge">JPG</span> <span class="format-badge">PNG</span> <span class="format-badge">WebP</span> <span class="format-badge">GIF</span> <span class="format-badge">BMP</span></p>
                     <input type="file" id="imageUpload" accept="image/*" hidden>
                     <button class="upload-btn" id="uploadTrigger"><i class="fas fa-upload"></i> Select Image</button>
+                </div>
+                
+                <!-- In-content ad placement -->
+                <div class="mobile-ad" style="margin: 20px 0;">
+                    <div class="ad-label">Advertisement</div>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
                 
                 <div class="progress-container" id="progressContainer">
@@ -682,29 +828,24 @@
             
             <section class="ad-section">
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Native Banner 2:1 Horizontal -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
                 
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="0987654321"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Native Banner 1:2 Vertical -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+                
+                <div class="ad-unit">
+                    <div class="ad-label">Advertisement</div>
+                    <!-- Native Banner 1:1 Square -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
             </section>
         </div>
@@ -803,215 +944,215 @@
                             originalSize.textContent = `${fileSize} KB`;
                             
                             // Set aspect ratio
-                            aspectRatio = originalImage.width / originalImage.height;
-                            
-                            // Set default dimensions (50% of original)
-                            widthInput.value = Math.round(originalImage.width / 2);
-                            heightInput.value = Math.round(originalImage.height / 2);
-                            
-                            // Enable resize button
-                            resizeBtn.disabled = false;
-                            
-                            // Reset resized file info
-                            resizedInfo.textContent = 'Adjust settings and click Resize';
-                            resizedSize.textContent = '0 KB';
-                            sizeReduction.textContent = '0%';
-                            downloadBtn.disabled = true;
-                        };
-                        originalImage.src = event.target.result;
+                                                    aspectRatio = originalImage.width / originalImage.height;
+                        
+                        // Set default dimensions (50% of original)
+                        widthInput.value = Math.round(originalImage.width / 2);
+                        heightInput.value = Math.round(originalImage.height / 2);
+                        
+                        // Enable resize button
+                        resizeBtn.disabled = false;
+                        
+                        // Reset resized file info
+                        resizedInfo.textContent = 'Adjust settings and click Resize';
+                        resizedSize.textContent = '0 KB';
+                        sizeReduction.textContent = '0%';
+                        downloadBtn.disabled = true;
                     };
-                    reader.readAsDataURL(file);
-                }
-            });
-            
-            compressionLevel.addEventListener('input', function() {
-                compressionValue.textContent = `${this.value}%`;
-            });
-            
-            widthInput.addEventListener('input', function() {
-                if (isRatioLocked && aspectRatio && originalImage) {
-                    heightInput.value = Math.round(this.value / aspectRatio);
-                }
-            });
-            
-            heightInput.addEventListener('input', function() {
-                if (isRatioLocked && aspectRatio && originalImage) {
-                    widthInput.value = Math.round(this.value * aspectRatio);
-                }
-            });
-            
-            ratioLock.addEventListener('click', function() {
-                isRatioLocked = !isRatioLocked;
-                this.classList.toggle('fa-link');
-                this.classList.toggle('fa-unlink');
-            });
-            
-            // Preset button handlers
-            presetButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const width = this.dataset.width;
-                    const height = this.dataset.height;
-                    
-                    widthInput.value = width;
-                    heightInput.value = height;
-                    
-                    // If ratio is locked, we need to adjust the aspect ratio
-                    if (isRatioLocked && originalImage) {
-                        aspectRatio = width / height;
-                    }
-                });
-            });
-            
-            resizeBtn.addEventListener('click', function() {
-                if (!originalImage) return;
-                
-                // Validate dimensions
-                const width = parseInt(widthInput.value);
-                const height = parseInt(heightInput.value);
-                
-                if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
-                    alert('Please enter valid dimensions.');
-                    return;
-                }
-                
-                if (width > 10000 || height > 10000) {
-                    alert('Maximum dimension allowed is 10000px.');
-                    return;
-                }
-                
-                // Show loading state
-                resizeBtn.disabled = true;
-                resizeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Resizing...';
-                resizeBtn.classList.add('resizing');
-                progressContainer.style.display = 'block';
-                
-                // Simulate resizing process with progress
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += 5;
-                    progressBar.style.width = `${progress}%`;
-                    
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                        finishResizing();
-                    }
-                }, 100);
-            });
-            
-            downloadBtn.addEventListener('click', function() {
-                if (!resizedImageBlob) return;
-                
-                const format = outputFormat.value;
-                const downloadLink = document.createElement('a');
-                downloadLink.href = URL.createObjectURL(resizedImageBlob);
-                downloadLink.download = `resized-image.${format}`;
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-            });
-            
-            resetBtn.addEventListener('click', function() {
-                // Reset everything
-                originalImage = null;
-                resizedImageBlob = null;
-                imageUpload.value = '';
-                compressionLevel.value = 85;
-                compressionValue.textContent = '85%';
-                widthInput.value = '';
-                heightInput.value = '';
-                resizeBtn.disabled = true;
-                resizeBtn.innerHTML = '<i class="fas fa-expand-arrows-alt"></i> Resize Image';
-                resizeBtn.classList.remove('resizing');
-                downloadBtn.disabled = true;
-                progressContainer.style.display = 'none';
-                progressBar.style.width = '0%';
-                isRatioLocked = true;
-                ratioLock.classList.add('fa-link');
-                ratioLock.classList.remove('fa-unlink');
-                
-                // Reset file info
-                originalPreview.innerHTML = '';
-                resizedPreview.innerHTML = '';
-                originalInfo.textContent = 'No image selected';
-                resizedInfo.textContent = 'No image available';
-                originalSize.textContent = '0 KB';
-                resizedSize.textContent = '0 KB';
-                sizeReduction.textContent = '0%';
-            });
-            
-            function finishResizing() {
-                if (!originalImage) return;
-                
-                // Get dimensions
-                const width = parseInt(widthInput.value);
-                const height = parseInt(heightInput.value);
-                
-                // Create canvas
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                
-                // Set canvas dimensions
-                canvas.width = width;
-                canvas.height = height;
-                
-                // Draw image on canvas with high quality resizing
-                ctx.imageSmoothingEnabled = true;
-                ctx.imageSmoothingQuality = 'high';
-                ctx.drawImage(originalImage, 0, 0, width, height);
-                
-                // Get quality level
-                const quality = compressionLevel.value / 100;
-                const format = outputFormat.value;
-                
-                // Convert canvas to blob with selected format and quality
-                canvas.toBlob(function(blob) {
-                    // Create and display resized image
-                    const resizedUrl = URL.createObjectURL(blob);
-                    resizedImageBlob = blob;
-                    
-                    const imgElement = document.createElement('img');
-                    imgElement.src = resizedUrl;
-                    imgElement.classList.add('preview-img');
-                    resizedPreview.innerHTML = '';
-                    resizedPreview.appendChild(imgElement);
-                    
-                    // Update file info
-                    const fileSize = (blob.size / 1024).toFixed(2);
-                    resizedInfo.textContent = `Size: ${fileSize} KB | Dimensions: ${width}×${height}px`;
-                    resizedSize.textContent = `${fileSize} KB`;
-                    
-                    // Calculate savings
-                    const originalFileSize = originalImage.src.length * 0.75; // Approximate original size in bytes
-                    const reduction = (100 - (blob.size / originalFileSize) * 100).toFixed(1);
-                    sizeReduction.textContent = `${reduction}%`;
-                    
-                    // Enable download button
-                    downloadBtn.disabled = false;
-                    
-                    // Reset resize button
-                    resizeBtn.disabled = false;
-                    resizeBtn.innerHTML = '<i class="fas fa-expand-arrows-alt"></i> Resize Image';
-                    resizeBtn.classList.remove('resizing');
-                }, `image/${outputFormat.value}`, quality);
+                    originalImage.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
             }
-            
-            // Theme toggle functionality
-            const themeToggle = document.querySelector('.theme-toggle');
-            themeToggle.addEventListener('click', function() {
-                const icon = this.querySelector('i');
-                if (icon.classList.contains('fa-moon')) {
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                    this.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-                    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
-                } else {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                    this.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
-                    document.body.style.filter = 'none';
+        });
+        
+        compressionLevel.addEventListener('input', function() {
+            compressionValue.textContent = `${this.value}%`;
+        });
+        
+        widthInput.addEventListener('input', function() {
+            if (isRatioLocked && aspectRatio && originalImage) {
+                heightInput.value = Math.round(this.value / aspectRatio);
+            }
+        });
+        
+        heightInput.addEventListener('input', function() {
+            if (isRatioLocked && aspectRatio && originalImage) {
+                widthInput.value = Math.round(this.value * aspectRatio);
+            }
+        });
+        
+        ratioLock.addEventListener('click', function() {
+            isRatioLocked = !isRatioLocked;
+            this.classList.toggle('fa-link');
+            this.classList.toggle('fa-unlink');
+        });
+        
+        // Preset button handlers
+        presetButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const width = this.dataset.width;
+                const height = this.dataset.height;
+                
+                widthInput.value = width;
+                heightInput.value = height;
+                
+                // If ratio is locked, we need to adjust the aspect ratio
+                if (isRatioLocked && originalImage) {
+                    aspectRatio = width / height;
                 }
             });
         });
-    </script>
+        
+        resizeBtn.addEventListener('click', function() {
+            if (!originalImage) return;
+            
+            // Validate dimensions
+            const width = parseInt(widthInput.value);
+            const height = parseInt(heightInput.value);
+            
+            if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0) {
+                alert('Please enter valid dimensions.');
+                return;
+            }
+            
+            if (width > 10000 || height > 10000) {
+                alert('Maximum dimension allowed is 10000px.');
+                return;
+            }
+            
+            // Show loading state
+            resizeBtn.disabled = true;
+            resizeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Resizing...';
+            resizeBtn.classList.add('resizing');
+            progressContainer.style.display = 'block';
+            
+            // Simulate resizing process with progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    finishResizing();
+                }
+            }, 100);
+        });
+        
+        downloadBtn.addEventListener('click', function() {
+            if (!resizedImageBlob) return;
+            
+            const format = outputFormat.value;
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(resizedImageBlob);
+            downloadLink.download = `resized-image.${format}`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        });
+        
+        resetBtn.addEventListener('click', function() {
+            // Reset everything
+            originalImage = null;
+            resizedImageBlob = null;
+            imageUpload.value = '';
+            compressionLevel.value = 85;
+            compressionValue.textContent = '85%';
+            widthInput.value = '';
+            heightInput.value = '';
+            resizeBtn.disabled = true;
+            resizeBtn.innerHTML = '<i class="fas fa-expand-arrows-alt"></i> Resize Image';
+            resizeBtn.classList.remove('resizing');
+            downloadBtn.disabled = true;
+            progressContainer.style.display = 'none';
+            progressBar.style.width = '0%';
+            isRatioLocked = true;
+            ratioLock.classList.add('fa-link');
+            ratioLock.classList.remove('fa-unlink');
+            
+            // Reset file info
+            originalPreview.innerHTML = '';
+            resizedPreview.innerHTML = '';
+            originalInfo.textContent = 'No image selected';
+            resizedInfo.textContent = 'No image available';
+            originalSize.textContent = '0 KB';
+            resizedSize.textContent = '0 KB';
+            sizeReduction.textContent = '0%';
+        });
+        
+        function finishResizing() {
+            if (!originalImage) return;
+            
+            // Get dimensions
+            const width = parseInt(widthInput.value);
+            const height = parseInt(heightInput.value);
+            
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions
+            canvas.width = width;
+            canvas.height = height;
+            
+            // Draw image on canvas with high quality resizing
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(originalImage, 0, 0, width, height);
+            
+            // Get quality level
+            const quality = compressionLevel.value / 100;
+            const format = outputFormat.value;
+            
+            // Convert canvas to blob with selected format and quality
+            canvas.toBlob(function(blob) {
+                // Create and display resized image
+                const resizedUrl = URL.createObjectURL(blob);
+                resizedImageBlob = blob;
+                
+                const imgElement = document.createElement('img');
+                imgElement.src = resizedUrl;
+                imgElement.classList.add('preview-img');
+                resizedPreview.innerHTML = '';
+                resizedPreview.appendChild(imgElement);
+                
+                // Update file info
+                const fileSize = (blob.size / 1024).toFixed(2);
+                resizedInfo.textContent = `Size: ${fileSize} KB | Dimensions: ${width}×${height}px`;
+                resizedSize.textContent = `${fileSize} KB`;
+                
+                // Calculate savings
+                const originalFileSize = originalImage.src.length * 0.75; // Approximate original size in bytes
+                const reduction = (100 - (blob.size / originalFileSize) * 100).toFixed(1);
+                sizeReduction.textContent = `${reduction}%`;
+                
+                // Enable download button
+                downloadBtn.disabled = false;
+                
+                // Reset resize button
+                resizeBtn.disabled = false;
+                resizeBtn.innerHTML = '<i class="fas fa-expand-arrows-alt"></i> Resize Image';
+                resizeBtn.classList.remove('resizing');
+            }, `image/${outputFormat.value}`, quality);
+        }
+        
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-moon')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                this.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+                document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                this.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+                document.body.style.filter = 'none';
+            }
+        });
+    });
+</script>
 </body>
 </html>
