@@ -100,6 +100,7 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
         }
         
         .ad-unit p {
@@ -388,6 +389,33 @@
             gap: 8px;
         }
         
+        /* Ad-specific styles */
+        .leaderboard-ad {
+            width: 728px;
+            height: 90px;
+            margin: 0 auto 20px;
+            background: var(--secondary-dark);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .inline-ad {
+            margin: 25px 0;
+            background: var(--secondary-dark);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
+        }
+        
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
@@ -421,6 +449,12 @@
             .controls {
                 grid-template-columns: 1fr;
             }
+            
+            .leaderboard-ad {
+                width: 100%;
+                height: auto;
+                min-height: 90px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -434,6 +468,10 @@
             
             .upload-container {
                 padding: 20px 10px;
+            }
+            
+            .ad-section {
+                flex-direction: column;
             }
         }
         
@@ -669,15 +707,19 @@
 </div>
 <!-- Navbar End -->
 
-<!-- Script -->
-<script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
-
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
+        <!-- Leaderboard Ad (728x90) - Placed below navigation for maximum visibility -->
+        <div class="leaderboard-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+        </div>
 
         <header>
             <h1>Image Color Picker Pro</h1>
@@ -692,6 +734,12 @@
                     <p>Supported formats: <span class="format-badge">JPG</span> <span class="format-badge">PNG</span> <span class="format-badge">WebP</span> <span class="format-badge">BMP</span></p>
                     <input type="file" id="imageUpload" accept="image/*" hidden>
                     <button class="upload-btn" id="uploadTrigger"><i class="fas fa-upload"></i> Select Image</button>
+                </div>
+                
+                <!-- Native Banner (2:1 Horizontal) - Contextual placement after upload section -->
+                <div class="inline-ad">
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
                 
                 <div class="progress-container" id="progressContainer">
@@ -751,6 +799,12 @@
                     </div>
                 </div>
                 
+                <!-- Native Banner (1:1 Square) - Below color palette section -->
+                <div class="inline-ad">
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+                
                 <div class="color-history">
                     <div class="history-title">
                         <h3>Color History</h3>
@@ -784,17 +838,10 @@
             </section>
             
             <section class="ad-section">
+                <!-- Native Banner (1:2 Vertical) - Right sidebar placement -->
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
                 
                 <div class="ad-unit">
