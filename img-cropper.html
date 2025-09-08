@@ -100,11 +100,45 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
         }
         
         .ad-unit p {
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+        
+        .ad-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Leaderboard ad container */
+        .leaderboard-ad {
+            width: 100%;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            background: var(--secondary-dark);
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        /* In-content ad containers */
+        .in-content-ad {
+            width: 100%;
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
         }
         
         .upload-container {
@@ -475,6 +509,11 @@
             .controls {
                 grid-template-columns: 1fr;
             }
+            
+            /* Hide leaderboard ad on mobile */
+            .leaderboard-ad {
+                display: none;
+            }
         }
         
         @media (max-width: 480px) {
@@ -616,67 +655,84 @@
 
     <div class="container">
         <!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Navbar Start -->
-<nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
-  <!-- Logo -->
-  <a href="/Tool/index.html" class="flex items-center space-x-2">
-    <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
-    <span class="text-xl font-bold text-teal-300">ToolKit</span>
-  </a>
+        <!-- Navbar Start -->
+        <nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
+            <!-- Logo -->
+            <a href="/Tool/index.html" class="flex items-center space-x-2">
+                <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
+                <span class="text-xl font-bold text-teal-300">ToolKit</span>
+            </a>
 
-  <!-- Desktop Menu -->
-  <ul class="hidden md:flex space-x-8 font-medium text-white">
-    <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
-    <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
-    <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
-    <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
-    <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
-    <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
-  </ul>
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-8 font-medium text-white">
+                <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
+                <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
+                <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
+                <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
+                <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
+                <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
+            </ul>
 
-  <!-- Buttons (Desktop) -->
-  <div class="hidden md:flex space-x-4">
-    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
-    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
-  </div>
+            <!-- Buttons (Desktop) -->
+            <div class="hidden md:flex space-x-4">
+                <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+                <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+            </div>
 
-  <!-- Mobile Hamburger -->
-  <div class="md:hidden">
-    <button id="menu-btn" class="focus:outline-none">
-      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
-           viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
-</nav>
+            <!-- Mobile Hamburger -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="focus:outline-none">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
 
-<!-- Mobile Menu -->
-<div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
-  <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
-  <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
-  <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
-  <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
-  <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
-  <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
-  
-  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
-  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
-</div>
-<!-- Navbar End -->
+        <!-- Mobile Menu -->
+        <div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
+            <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
+            <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
+            <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
+            <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
+            <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
+            <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
+            
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+        </div>
+        <!-- Navbar End -->
 
-<!-- Script -->
-<script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
+        <!-- Script -->
+        <script>
+            const btn = document.getElementById('menu-btn');
+            const menu = document.getElementById('menu');
 
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        </script>
+
+        <!-- Leaderboard Ad (728x90) - Top of page -->
+        <div class="leaderboard-ad">
+            <div id="adsterra-leaderboard">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
+        </div>
+        <div class="ad-label">Advertisement</div>
 
         <header>
             <h1>Image Cropper Pro</h1>
@@ -692,6 +748,15 @@
                     <input type="file" id="imageUpload" accept="image/*" hidden>
                     <button class="upload-btn" id="uploadTrigger"><i class="fas fa-upload"></i> Select Image</button>
                 </div>
+                
+                <!-- In-content Ad (Native 2:1 Horizontal) -->
+                <div class="in-content-ad">
+                    <div id="adsterra-native-horizontal">
+                        <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                        <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                    </div>
+                </div>
+                <div class="ad-label">Advertisement</div>
                 
                 <div class="progress-container" id="progressContainer">
                     <div class="progress-bar" id="progressBar"></div>
@@ -789,6 +854,15 @@
                     </div>
                 </div>
                 
+                <!-- In-content Ad (Native 1:1) -->
+                <div class="in-content-ad">
+                    <div id="adsterra-native-square">
+                        <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                        <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                    </div>
+                </div>
+                <div class="ad-label">Advertisement</div>
+                
                 <div class="preview-container">
                     <div class="image-preview">
                         <h3>Original Image</h3>
@@ -811,30 +885,22 @@
             </section>
             
             <section class="ad-section">
+                <!-- Sidebar Ad (Native 1:2 Vertical) -->
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <div id="adsterra-native-vertical">
+                        <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                        <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                    </div>
+                    <div class="ad-label">Advertisement</div>
                 </div>
                 
+                <!-- Sidebar Ad (Native 1:1 Square) -->
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="0987654321"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                    <div id="adsterra-native-square-sidebar">
+                        <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                        <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                    </div>
+                    <div class="ad-label">Advertisement</div>
                 </div>
             </section>
         </div>
@@ -856,6 +922,23 @@
             
             <p>With our tool, you can maintain aspect ratio, set custom dimensions, and adjust quality settings to find the perfect balance between size and visual fidelity.</p>
         </section>
+        
+        <!-- Footer Ad (Leaderboard) -->
+        <div class="leaderboard-ad">
+            <div id="adsterra-leaderboard-footer">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
+        </div>
+        <div class="ad-label">Advertisement</div>
         
         <footer>
             <p>&copy; 2023 Image Cropper Pro | All Rights Reserved</p>
