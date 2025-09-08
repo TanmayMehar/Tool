@@ -100,11 +100,23 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
         }
         
         .ad-unit p {
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+        
+        .ad-label {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(0,0,0,0.3);
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            padding: 2px 5px;
+            border-radius: 3px;
         }
         
         .upload-container {
@@ -372,6 +384,24 @@
             transition: width 0.3s;
         }
         
+        .leaderboard-ad {
+            width: 728px;
+            height: 90px;
+            margin: 0 auto;
+            background: var(--secondary-dark);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ad-container {
+            margin: 15px 0;
+        }
+        
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
@@ -401,6 +431,12 @@
                 margin: 0 auto 20px;
                 width: fit-content;
             }
+            
+            .leaderboard-ad {
+                width: 100%;
+                height: auto;
+                min-height: 90px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -414,6 +450,10 @@
             
             .upload-container {
                 padding: 20px 10px;
+            }
+            
+            .ad-section {
+                flex-direction: column;
             }
         }
         
@@ -484,82 +524,77 @@
         <i class="fas fa-moon"></i> Dark Mode
     </button>
     
- <div class="container">
-     <!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+    <div class="container">
+        <!-- Tailwind CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Navbar Start -->
-<nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
-  <!-- Logo -->
-  <a href="/Tool/index.html" class="flex items-center space-x-2">
-    <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
-    <span class="text-xl font-bold text-teal-300">ToolKit</span>
-  </a>
+        <!-- Navbar Start -->
+        <nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
+            <!-- Logo -->
+            <a href="/Tool/index.html" class="flex items-center space-x-2">
+                <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
+                <span class="text-xl font-bold text-teal-300">ToolKit</span>
+            </a>
 
-  <!-- Desktop Menu -->
-  <ul class="hidden md:flex space-x-8 font-medium text-white">
-    <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
-    <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
-    <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
-    <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
-    <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
-    <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
-  </ul>
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-8 font-medium text-white">
+                <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
+                <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
+                <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
+                <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
+                <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
+                <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
+            </ul>
 
-  <!-- Buttons (Desktop) -->
-  <div class="hidden md:flex space-x-4">
-    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
-    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
-  </div>
+            <!-- Buttons (Desktop) -->
+            <div class="hidden md:flex space-x-4">
+                <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+                <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+            </div>
 
-  <!-- Mobile Hamburger -->
-  <div class="md:hidden">
-    <button id="menu-btn" class="focus:outline-none">
-      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
-           viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
-</nav>
+            <!-- Mobile Hamburger -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="focus:outline-none">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
 
-<!-- Mobile Menu -->
-<div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
-  <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
-  <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
-  <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
-  <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
-  <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
-  <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
-  
-  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
-  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
-</div>
-<!-- Navbar End -->
+        <!-- Mobile Menu -->
+        <div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
+            <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
+            <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
+            <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
+            <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
+            <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
+            <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
+            
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+        </div>
+        <!-- Navbar End -->
 
-<!-- Script -->
-<script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
+        <!-- Header Leaderboard Ad -->
+        <div class="ad-container">
+            <div class="leaderboard-ad">
+                <span class="ad-label">Ad</span>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
+        </div>
 
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-</script>
-
-     <!--Ads -->
-		<script type="text/javascript">
-	atOptions = {
-		'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
-        
         <header>
             <h1>Background Remover Pro</h1>
             <p>Remove image backgrounds instantly with AI-powered precision</p>
@@ -659,6 +694,21 @@
                     </ul>
                 </div>
             </section>
+            
+            <section class="ad-section">
+                <!-- Vertical Native Ad -->
+                <div class="ad-unit">
+                    <span class="ad-label">Ad</span>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+                
+                <!-- Horizontal Native Ad -->
+                <div class="ad-unit">
+                    <span class="ad-label">Ad</span>
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
                 
                 <div class="ad-unit">
                     <h4>Premium Features</h4>
@@ -667,17 +717,23 @@
                 </div>
             </section>
         </div>
-        <!--Ads -->
-		<script type="text/javascript">
-	atOptions = {
-		'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+        
+        <!-- In-content Leaderboard Ad -->
+        <div class="ad-container">
+            <div class="leaderboard-ad">
+                <span class="ad-label">Ad</span>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
+        </div>
         
         <section class="seo-content">
             <h2>Why Use Our Background Removal Tool?</h2>
@@ -688,22 +744,27 @@
             <p>All processing happens directly in your browser for maximum privacy and security - your images are never uploaded to any server.</p>
         </section>
         
+        <!-- Footer Leaderboard Ad -->
+        <div class="ad-container">
+            <div class="leaderboard-ad">
+                <span class="ad-label">Ad</span>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+            </div>
+        </div>
+        
         <footer>
             <p>&copy; 2023 Background Remover Pro | All Rights Reserved</p>
             <p>This tool processes your images entirely in your browser - no uploads to servers required!</p>
         </footer>
-     <!--Ads -->
-		<script type="text/javascript">
-	atOptions = {
-		'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
-        
     </div>
 
     <script>
@@ -923,6 +984,16 @@
                     document.body.style.filter = 'none';
                 }
             });
+            
+            // Mobile menu functionality
+            const btn = document.getElementById('menu-btn');
+            const menu = document.getElementById('menu');
+            
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                });
+            }
         });
     </script>
 </body>
