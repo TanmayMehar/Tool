@@ -535,6 +535,37 @@
             background: var(--accent-blue);
             color: var(--primary-dark);
         }
+        /* Ad container styling */
+.header-ad {
+    width: 100%;
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    background: var(--secondary-dark);
+    border-radius: 8px;
+}
+
+.horizontal-native, .square-native, .vertical-native {
+    background: var(--secondary-dark);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+}
+
+/* Responsive ad adjustments */
+@media (max-width: 768px) {
+    .header-ad {
+        display: none; /* Hide leaderboard on mobile */
+    }
+    
+    .horizontal-native, .square-native, .vertical-native {
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     </style>
 </head>
 <body>
@@ -595,7 +626,19 @@
   <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
 </div>
 <!-- Navbar End -->
-
+<!-- Place after navigation -->
+<div class="header-ad">
+    <script type="text/javascript">
+        atOptions = {
+            'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+</div>
 <!-- Script -->
 <script>
   const btn = document.getElementById('menu-btn');
@@ -605,7 +648,11 @@
     menu.classList.toggle('hidden');
   });
 </script>
-
+<!-- Place before tool section -->
+<div class="ad-unit horizontal-native">
+    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+</div>
         <header>
             <h1>PDF to Image Converter</h1>
             <p>Convert PDF pages to images and images to PDF with adjustable quality settings</p>
@@ -697,29 +744,17 @@
             
             <section class="ad-section">
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="1234567890"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
+                   <!-- Replace existing Google ads in sidebar -->
+<div class="ad-unit square-native">
+    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+</div>
                 
                 <div class="ad-unit">
-                    <!-- Google AdSense Ad Unit -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-example"
-                         data-ad-slot="0987654321"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
+                   <!-- Replace existing Google ads in sidebar -->
+<div class="ad-unit square-native">
+    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
                 </div>
             </section>
         </div>
@@ -752,7 +787,11 @@
             
             <p>Our converter tool allows you to easily switch between PDF and image formats while adjusting quality settings to find the perfect balance between file size and quality for your specific needs.</p>
         </section>
-        
+        <!-- Place after SEO content section -->
+<div class="ad-unit vertical-native">
+    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+</div>
         <footer>
             <p>&copy; 2023 PDF to Image Converter | All Rights Reserved</p>
             <p>This tool processes your files entirely in your browser - no uploads to servers required!</p>
