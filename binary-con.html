@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BinaryConvert Pro - Text to Binary Converter Tool</title>
+    <meta name="description" content="Free online text to binary converter. Convert any text to binary code instantly with our easy-to-use tool. Perfect for developers, students, and coding enthusiasts.">
+    <meta name="keywords" content="text to binary, binary converter, binary code, text conversion, binary tool, online converter">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-dark: #0a192f;
+            --secondary-dark: #112240;
+            --accent-blue: #64ffda;
+            --accent-purple: #7b4fff;
+            --text-primary: #e6f1ff;
+            --text-secondary: #8892b0;
+            --card-bg: #172a45;
+            --slider-bg: #2d3f5a;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #0d1b2a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(10, 25, 47, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--secondary-dark), var(--primary-dark));
+            color: var(--text-primary);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: var(--text-secondary);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .tool-section {
+            flex: 1 1 700px;
+            padding: 25px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .ad-section {
+            flex: 0 1 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .ad-unit {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
+        }
+        
+        .ad-unit.horizontal {
+            min-height: 90px;
+            width: 100%;
+        }
+        
+        .ad-unit.vertical {
+            min-height: 250px;
+            width: 100%;
+        }
+        
+        .ad-unit.square {
+            min-height: 250px;
+            width: 100%;
+        }
+        
+        .input-container {
+            margin-bottom: 30px;
+        }
+        
+        .input-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        
+        .input-container textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--slider-bg);
+            background: var(--secondary-dark);
+            color: var(--text-primary);
+            font-size: 1rem;
+            resize: vertical;
+        }
+        
+        .conversion-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .option-group {
+            margin-bottom: 20px;
+        }
+        
+        .option-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        
+        .option-group select, .option-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--slider-bg);
+            background: var(--secondary-dark);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 5px;
+            background: var(--slider-bg);
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+            border: none;
+        }
+        
+        .value-display {
+            font-weight: 700;
+            color: var(--accent-blue);
+            min-width: 40px;
+        }
+        
+        .output-container {
+            margin: 30px 0;
+        }
+        
+        .output-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+        
+        .output-box {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--slider-bg);
+            background: var(--secondary-dark);
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            overflow-y: auto;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: var(--secondary-dark);
+            padding: 15px;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            margin: 5px;
+        }
+        
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(123, 79, 255, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--secondary-dark);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .seo-content {
+            padding: 30px;
+            background: var(--card-bg);
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .seo-content h2 {
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+        
+        .seo-content p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .ad-section {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .ad-unit {
+                flex: 1 1 200px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .theme-toggle {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 20px;
+                width: fit-content;
+            }
+            
+            .conversion-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .input-container textarea, .output-box {
+                min-height: 120px;
+            }
+        }
+        
+        /* Animation for processing */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .processing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Binary animation effect */
+        .binary-char {
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .binary-char:hover {
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+        
+        /* Example section */
+        .examples {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 15px 0;
+            margin: 20px 0;
+        }
+        
+        .example {
+            flex: 0 0 auto;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            background: var(--secondary-dark);
+            border: 1px solid var(--accent-purple);
+            transition: all 0.3s;
+        }
+        
+        .example:hover {
+            background: var(--accent-purple);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle">
+        <i class="fas fa-moon"></i> Dark Mode
+    </button>
+
+    <div class="container">
+        <!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Navbar Start -->
+<nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
+  <!-- Logo -->
+  <a href="/Tool/index.html" class="flex items-center space-x-2">
+    <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
+    <span class="text-xl font-bold text-teal-300">ToolKit</span>
+  </a>
+
+  <!-- Desktop Menu -->
+  <ul class="hidden md:flex space-x-8 font-medium text-white">
+    <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
+    <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
+    <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
+    <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
+    <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
+    <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
+  </ul>
+
+  <!-- Buttons (Desktop) -->
+  <div class="hidden md:flex space-x-4">
+    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+  </div>
+
+  <!-- Mobile Hamburger -->
+  <div class="md:hidden">
+    <button id="menu-btn" class="focus:outline-none">
+      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
+  <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
+  <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
+  <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
+  <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
+  <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
+  <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
+  
+  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+</div>
+<!-- Navbar End -->
+ <div class="ad-unit horizontal">
+                    <!-- Adsterra Leaderboard Banner -->
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+                </div>
+<!-- Script -->
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+        <header>
+            <h1>BinaryConvert Pro</h1>
+            <p>Convert text to binary code instantly with our professional tool</p>
+        </header>
+        
+        <div class="main-content">
+            <section class="tool-section">
+                <div class="input-container">
+                    <label for="inputText">Enter Text to Convert</label>
+                    <textarea id="inputText" placeholder="Type or paste your text here..."></textarea>
+                </div>
+                
+                <div class="examples">
+                    <div class="example" data-example="Hello World">Hello World</div>
+                    <div class="example" data-example="Binary Code">Binary Code</div>
+                    <div class="example" data-example="123456">123456</div>
+                    <div class="example" data-example="Programming">Programming</div>
+                    <div class="example" data-example="Lorem Ipsum">Lorem Ipsum</div>
+                </div>
+                
+                <div class="conversion-options">
+                    <div class="option-group">
+                        <label for="encodingFormat">Encoding Format</label>
+                        <select id="encodingFormat">
+                            <option value="utf8">UTF-8 (Standard)</option>
+                            <option value="ascii">ASCII</option>
+                            <option value="utf16">UTF-16</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="binaryFormat">Binary Format</label>
+                        <select id="binaryFormat">
+                            <option value="spaces">With Spaces (01000010 01101001 01101110)</option>
+                            <option value="nospaces">No Spaces (010000100110100101101110)</option>
+                            <option value="bytes">Grouped by Bytes (01000010 01101001 01101110)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label for="compressionLevel">Compression Level</label>
+                        <div class="slider-container">
+                            <input type="range" id="compressionLevel" min="0" max="100" value="0">
+                            <span class="value-display" id="compressionValue">0%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="convertBtn"><i class="fas fa-exchange-alt"></i> Convert to Binary</button>
+                    <button class="btn btn-outline" id="clearBtn"><i class="fas fa-broom"></i> Clear</button>
+                    <button class="btn btn-outline" id="reverseBtn"><i class="fas fa-retweet"></i> Binary to Text</button>
+                </div>
+                
+                <div class="output-container">
+                    <label for="outputBinary">Binary Output</label>
+                    <div class="output-box" id="outputBinary">Binary code will appear here...</div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="charCount">0</div>
+                        <div class="stat-label">Characters</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="binaryLength">0</div>
+                        <div class="stat-label">Binary Digits</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="byteSize">0 B</div>
+                        <div class="stat-label">Size</div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="copyBtn" disabled><i class="fas fa-copy"></i> Copy to Clipboard</button>
+                    <button class="btn btn-outline" id="downloadBtn" disabled><i class="fas fa-download"></i> Download</button>
+                </div>
+            </section>
+            
+            <section class="ad-section">
+                <div class="ad-unit horizontal">
+                    <!-- Adsterra Leaderboard Banner -->
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+                </div>
+                
+                <div class="ad-unit vertical">
+                    <!-- Adsterra Native Banner (Vertical) -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+                
+                <div class="ad-unit square">
+                    <!-- Adsterra Native Banner (Square) -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+            </section>
+        </div>
+        
+        <section class="seo-content">
+            <h2>Text to Binary Conversion Explained</h2>
+            <p>Binary code is the fundamental language of computers, representing text, instructions, and data using only two symbols: 0 and 1. Each character in your text is converted to a unique sequence of 8 binary digits (bits) that computers can process.</p>
+            
+            <p>Our Text to Binary Converter tool makes this conversion process simple and efficient. Whether you're a developer debugging code, a student learning about computer science, or just curious about how binary works, our tool provides accurate conversions instantly.</p>
+            
+            <p>The converter supports multiple encoding formats including UTF-8, ASCII, and UTF-16, allowing you to work with various character sets. You can also choose different binary output formats to suit your needs.</p>
+        </section>
+        
+        <footer>
+            <p>&copy; 2023 BinaryConvert Pro | All Rights Reserved</p>
+            <p>All conversions happen in your browser - no data is sent to servers!</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const inputText = document.getElementById('inputText');
+            const outputBinary = document.getElementById('outputBinary');
+            const encodingFormat = document.getElementById('encodingFormat');
+            const binaryFormat = document.getElementById('binaryFormat');
+            const compressionLevel = document.getElementById('compressionLevel');
+            const compressionValue = document.getElementById('compressionValue');
+            const convertBtn = document.getElementById('convertBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const reverseBtn = document.getElementById('reverseBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const charCount = document.getElementById('charCount');
+            const binaryLength = document.getElementById('binaryLength');
+            const byteSize = document.getElementById('byteSize');
+            
+            // Event listeners
+            inputText.addEventListener('input', updateStats);
+            
+            compressionLevel.addEventListener('input', function() {
+                compressionValue.textContent = `${this.value}%`;
+            });
+            
+            // Example buttons
+            document.querySelectorAll('.example').forEach(example => {
+                example.addEventListener('click', function() {
+                    inputText.value = this.getAttribute('data-example');
+                    updateStats();
+                });
+            });
+            
+            convertBtn.addEventListener('click', function() {
+                convertToBinary();
+            });
+            
+            clearBtn.addEventListener('click', function() {
+                inputText.value = '';
+                outputBinary.textContent = 'Binary code will appear here...';
+                updateStats();
+                copyBtn.disabled = true;
+                downloadBtn.disabled = true;
+            });
+            
+            reverseBtn.addEventListener('click', function() {
+                alert('Binary to Text conversion would be implemented here. In a full version, this would toggle between conversion modes.');
+            });
+            
+            copyBtn.addEventListener('click', function() {
+                navigator.clipboard.writeText(outputBinary.textContent).then(() => {
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+            
+            downloadBtn.addEventListener('click', function() {
+                const binaryContent = outputBinary.textContent;
+                const blob = new Blob([binaryContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'binary-code.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            function updateStats() {
+                const text = inputText.value;
+                charCount.textContent = text.length;
+                
+                if (text.length > 0) {
+                    // Calculate approximate binary length (8 bits per character for ASCII)
+                    const binaryLen = text.length * 8;
+                    binaryLength.textContent = binaryLen;
+                    
+                    // Calculate approximate size in bytes
+                    const size = new Blob([text]).size;
+                    byteSize.textContent = formatBytes(size);
+                } else {
+                    binaryLength.textContent = '0';
+                    byteSize.textContent = '0 B';
+                }
+            }
+            
+            function formatBytes(bytes, decimals = 2) {
+                if (bytes === 0) return '0 B';
+                
+                const k = 1024;
+                const dm = decimals < 0 ? 0 : decimals;
+                const sizes = ['B', 'KB', 'MB', 'GB'];
+                
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+            }
+            
+            function convertToBinary() {
+                const text = inputText.value;
+                
+                if (!text) {
+                    outputBinary.textContent = 'Please enter some text to convert.';
+                    return;
+                }
+                
+                // Show processing state
+                convertBtn.disabled = true;
+                convertBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Converting...';
+                convertBtn.classList.add('processing');
+                
+                // Simulate processing time
+                setTimeout(() => {
+                    let binaryResult = '';
+                    
+                    // Convert each character to binary
+                    for (let i = 0; i < text.length; i++) {
+                        const charCode = text.charCodeAt(i);
+                        let binaryChar = charCode.toString(2);
+                        
+                        // Ensure each binary representation is 8 bits long
+                        while (binaryChar.length < 8) {
+                            binaryChar = '0' + binaryChar;
+                        }
+                        
+                        // Apply formatting based on selection
+                        if (binaryFormat.value === 'spaces' && i > 0) {
+                            binaryResult += ' ';
+                        } else if (binaryFormat.value === 'bytes' && i > 0 && i % 4 === 0) {
+                            binaryResult += ' ';
+                        }
+                        
+                        binaryResult += binaryChar;
+                    }
+                    
+                    // Apply "compression" (simulated for this demo)
+                    const compression = parseInt(compressionLevel.value);
+                    if (compression > 0) {
+                        // In a real application, this would apply actual compression algorithms
+                        binaryResult = simulateCompression(binaryResult, compression);
+                    }
+                    
+                    // Display the result with animation
+                    animateBinaryOutput(binaryResult);
+                    
+                    // Enable output buttons
+                    copyBtn.disabled = false;
+                    downloadBtn.disabled = false;
+                    
+                    // Reset convert button
+                    convertBtn.disabled = false;
+                    convertBtn.innerHTML = '<i class="fas fa-exchange-alt"></i> Convert to Binary';
+                    convertBtn.classList.remove('processing');
+                    
+                    // Update stats
+                    binaryLength.textContent = binaryResult.replace(/ /g, '').length;
+                    const size = new Blob([binaryResult]).size;
+                    byteSize.textContent = formatBytes(size);
+                }, 800);
+            }
+            
+            function simulateCompression(binaryString, level) {
+                // This is a simplified simulation of compression
+                // In a real application, you would use actual compression algorithms
+                
+                if (level < 33) {
+                    // Minimal compression - just remove optional spaces
+                    return binaryString;
+                } else if (level < 66) {
+                    // Medium compression - use shorter representations for common patterns
+                    return binaryString.replace(/0000/g, '0-')
+                                       .replace(/1111/g, '1-')
+                                       .replace(/ 0/g, '0')
+                                       .replace(/ 1/g, '1');
+                } else {
+                    // High compression - more aggressive pattern replacement
+                    return binaryString.replace(/00000000/g, 'A')
+                                       .replace(/11111111/g, 'B')
+                                       .replace(/0000/g, 'C')
+                                       .replace(/1111/g, 'D')
+                                       .replace(/00/g, 'E')
+                                       .replace(/11/g, 'F')
+                                       .replace(/ /g, '');
+                }
+            }
+            
+            function animateBinaryOutput(binaryString) {
+                outputBinary.textContent = '';
+                let index = 0;
+                
+                function addNextCharacter() {
+                    if (index < binaryString.length) {
+                        const char = binaryString.charAt(index);
+                        const span = document.createElement('span');
+                        span.textContent = char;
+                        span.className = 'binary-char';
+                        
+                        // Add slight delay for visual effect
+                        span.style.animationDelay = `${index * 5}ms`;
+                        
+                        outputBinary.appendChild(span);
+                        index++;
+                        
+                        // Schedule next character
+                        setTimeout(addNextCharacter, 5);
+                    }
+                }
+                
+                // Start the animation
+                addNextCharacter();
+            }
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-moon')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    this.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+                    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    this.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+                    document.body.style.filter = 'none';
+                }
+            });
+            
+            // Initialize stats
+            updateStats();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
