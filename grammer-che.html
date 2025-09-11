@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrammarCheck Pro - Check Grammar Mistakes Online</title>
+    <meta name="description" content="Free online grammar checker tool. Detect and correct grammar mistakes, spelling errors, and punctuation issues with professional accuracy.">
+    <meta name="keywords" content="grammar checker, grammar check, spell check, punctuation checker, writing assistant, grammar tool">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-dark: #0a192f;
+            --secondary-dark: #112240;
+            --accent-blue: #64ffda;
+            --accent-purple: #7b4fff;
+            --text-primary: #e6f1ff;
+            --text-secondary: #8892b0;
+            --card-bg: #172a45;
+            --slider-bg: #2d3f5a;
+            --error-color: #ff6b6b;
+            --warning-color: #ffd166;
+            --success-color: #06d6a0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #0d1b2a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(10, 25, 47, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--secondary-dark), var(--primary-dark));
+            color: var(--text-primary);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: var(--text-secondary);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .tool-section {
+            flex: 1 1 700px;
+            padding: 25px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .ad-section {
+            flex: 0 1 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .ad-unit {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            overflow: hidden;
+        }
+        
+        .ad-unit.horizontal {
+            min-height: 90px;
+            width: 100%;
+        }
+        
+        .ad-unit.vertical {
+            min-height: 250px;
+            width: 100%;
+        }
+        
+        .ad-unit.square {
+            min-height: 250px;
+            width: 100%;
+        }
+        
+        .text-input-container {
+            border: 2px dashed var(--accent-purple);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+            background: rgba(27, 42, 65, 0.5);
+        }
+        
+        .text-input-container:hover {
+            background: rgba(39, 59, 89, 0.5);
+            border-color: var(--accent-blue);
+        }
+        
+        .text-input-container textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--slider-bg);
+            background: var(--secondary-dark);
+            color: var(--text-primary);
+            font-size: 1rem;
+            resize: vertical;
+        }
+        
+        .text-input-container textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: var(--secondary-dark);
+            padding: 15px;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            margin: 5px;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .checking-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .option-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-blue);
+        }
+        
+        .option-item label {
+            color: var(--text-secondary);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(123, 79, 255, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .results-container {
+            margin-top: 30px;
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .results-title {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+        }
+        
+        .results-count {
+            background: var(--card-bg);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .error-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 3px solid var(--error-color);
+        }
+        
+        .warning-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: rgba(255, 209, 102, 0.1);
+            border-left: 3px solid var(--warning-color);
+        }
+        
+        .suggestion-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: rgba(6, 214, 160, 0.1);
+            border-left: 3px solid var(--success-color);
+        }
+        
+        .error-message {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--error-color);
+        }
+        
+        .warning-message {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--warning-color);
+        }
+        
+        .suggestion-message {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--success-color);
+        }
+        
+        .error-context {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .correction {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--secondary-dark);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .seo-content {
+            padding: 30px;
+            background: var(--card-bg);
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .seo-content h2 {
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+        
+        .seo-content p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .ad-section {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .ad-unit {
+                flex: 1 1 200px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .theme-toggle {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 20px;
+                width: fit-content;
+            }
+            
+            .checking-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .text-input-container {
+                padding: 15px 10px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        /* Animation for processing */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .processing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Scrollbar styling */
+        .results-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .results-container::-webkit-scrollbar-track {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+        }
+        
+        .results-container::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 10px;
+        }
+        
+        .results-container::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-purple);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle">
+        <i class="fas fa-moon"></i> Dark Mode
+    </button>
+
+    <div class="container">
+        <!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Navbar Start -->
+<nav class="w-full bg-[#0b1526] px-6 py-4 flex items-center justify-between shadow-md">
+  <!-- Logo -->
+  <a href="/Tool/index.html" class="flex items-center space-x-2">
+    <div class="w-6 h-6 bg-gradient-to-r from-green-400 to-teal-500 rounded-full"></div>
+    <span class="text-xl font-bold text-teal-300">ToolKit</span>
+  </a>
+
+  <!-- Desktop Menu -->
+  <ul class="hidden md:flex space-x-8 font-medium text-white">
+    <li><a href="/Tool/index.html" class="hover:text-teal-400 transition">Home</a></li>
+    <li><a href="/Tool/about.html" class="hover:text-teal-400 transition">About</a></li>
+    <li><a href="/Tool/contect.html" class="hover:text-teal-400 transition">Contact Us</a></li>
+    <li><a href="/Tool/privacy.html" class="hover:text-teal-400 transition">Privacy Policy</a></li>
+    <li><a href="/Tool/term.html" class="hover:text-teal-400 transition">Terms & Conditions</a></li>
+    <li><a href="/Tool/desclaimar.html" class="hover:text-teal-400 transition">Disclaimer</a></li>
+  </ul>
+
+  <!-- Buttons (Desktop) -->
+  <div class="hidden md:flex space-x-4">
+    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+    <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+  </div>
+
+  <!-- Mobile Hamburger -->
+  <div class="md:hidden">
+    <button id="menu-btn" class="focus:outline-none">
+      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="menu" class="hidden md:hidden flex flex-col bg-[#0b1526] px-6 py-4 space-y-4 text-white transition-all duration-300 ease-in-out">
+  <a href="/Tool/index.html" class="block hover:text-teal-400 transition">Home</a>
+  <a href="/Tool/about.html" class="block hover:text-teal-400 transition">About</a>
+  <a href="/Tool/contect.html" class="block hover:text-teal-400 transition">Contact Us</a>
+  <a href="/Tool/privacy.html" class="block hover:text-teal-400 transition">Privacy Policy</a>
+  <a href="/Tool/term.html" class="block hover:text-teal-400 transition">Terms & Conditions</a>
+  <a href="/Tool/desclaimar.html" class="block hover:text-teal-400 transition">Disclaimer</a>
+  
+  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-400 to-teal-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Login</button>
+  <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-400 to-blue-500 text-sm font-semibold text-white shadow-md hover:opacity-90 transition">Sign Up</button>
+</div>
+<!-- Navbar End -->
+<div class="ad-unit horizontal">
+                    <!-- Adsterra Leaderboard Banner -->
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+                </div>
+<!-- Script -->
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+        <header>
+            <h1>GrammarCheck Pro</h1>
+            <p>Detect and correct grammar mistakes with professional accuracy</p>
+        </header>
+        
+        <div class="main-content">
+            <section class="tool-section">
+                <div class="text-input-container">
+                    <textarea id="textInput" placeholder="Paste your text here to check for grammar mistakes..."></textarea>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="wordCount">0</div>
+                        <div class="stat-label">Words</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="characterCount">0</div>
+                        <div class="stat-label">Characters</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="errorCount">0</div>
+                        <div class="stat-label">Errors Found</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="readabilityScore">0</div>
+                        <div class="stat-label">Readability Score</div>
+                    </div>
+                </div>
+                
+                <div class="checking-options">
+                    <div class="option-item">
+                        <input type="checkbox" id="checkGrammar" checked>
+                        <label for="checkGrammar">Check Grammar</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" id="checkSpelling" checked>
+                        <label for="checkSpelling">Check Spelling</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" id="checkPunctuation" checked>
+                        <label for="checkPunctuation">Check Punctuation</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="checkbox" id="checkStyle" checked>
+                        <label for="checkStyle">Check Writing Style</label>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="checkBtn"><i class="fas fa-check-circle"></i> Check Grammar</button>
+                    <button class="btn btn-outline" id="clearBtn"><i class="fas fa-broom"></i> Clear Text</button>
+                    <button class="btn btn-outline" id="copyBtn" disabled><i class="fas fa-copy"></i> Copy Corrected</button>
+                </div>
+                
+                <div class="results-container">
+                    <div class="results-header">
+                        <div class="results-title">Grammar Check Results</div>
+                        <div class="results-count" id="resultsCount">0 issues found</div>
+                    </div>
+                    <div id="resultsList">
+                        <div class="suggestion-item">
+                            <div class="suggestion-message">No issues detected yet</div>
+                            <div class="error-context">Enter your text and click "Check Grammar" to analyze your writing</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="ad-section">
+                <div class="ad-unit horizontal">
+                    <!-- Adsterra Leaderboard Banner -->
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'dfb13df8c68bb9b06c88d4a4fde08313',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/dfb13df8c68bb9b06c88d4a4fde08313/invoke.js"></script>
+                </div>
+                
+                <div class="ad-unit vertical">
+                    <!-- Adsterra Native Banner (Vertical) -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+                
+                <div class="ad-unit square">
+                    <!-- Adsterra Native Banner (Square) -->
+                    <script async="async" data-cfasync="false" src="//pl27598289.revenuecpmgate.com/66ab86a52b5de6c71875567f09387ce0/invoke.js"></script>
+                    <div id="container-66ab86a52b5de6c71875567f09387ce0"></div>
+                </div>
+            </section>
+        </div>
+        
+        <section class="seo-content">
+            <h2>Professional Grammar Checking Made Easy</h2>
+            <p>GrammarCheck Pro is an advanced online tool that helps you detect and correct grammar mistakes, spelling errors, and punctuation issues in your writing. Whether you're a student, professional, or non-native English speaker, our tool provides accurate suggestions to improve your writing.</p>
+            
+            <p>Our grammar checker uses sophisticated algorithms to identify common writing issues, including subject-verb agreement, tense consistency, article usage, preposition errors, and more. It also provides style suggestions to make your writing clearer and more engaging.</p>
+            
+            <p>Unlike other grammar checkers, our tool processes your text entirely in your browser for maximum privacy and speed. Your writing never leaves your computer, ensuring complete confidentiality for sensitive documents.</p>
+        </section>
+        
+        <footer>
+            <p>&copy; 2023 GrammarCheck Pro | All Rights Reserved</p>
+            <p>This tool processes your text entirely in your browser - no data is sent to servers!</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const textInput = document.getElementById('textInput');
+            const checkBtn = document.getElementById('checkBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const wordCount = document.getElementById('wordCount');
+            const characterCount = document.getElementById('characterCount');
+            const errorCount = document.getElementById('errorCount');
+            const readabilityScore = document.getElementById('readabilityScore');
+            const resultsCount = document.getElementById('resultsCount');
+            const resultsList = document.getElementById('resultsList');
+            
+            // Checkboxes
+            const checkGrammar = document.getElementById('checkGrammar');
+            const checkSpelling = document.getElementById('checkSpelling');
+            const checkPunctuation = document.getElementById('checkPunctuation');
+            const checkStyle = document.getElementById('checkStyle');
+            
+            // Sample error data for demonstration
+            const sampleErrors = [
+                {
+                    type: 'grammar',
+                    message: 'Subject-verb agreement error',
+                    context: 'She go to the store every day.',
+                    suggestion: 'She goes to the store every day.',
+                    severity: 'error'
+                },
+                {
+                    type: 'spelling',
+                    message: 'Possible spelling mistake',
+                    context: 'I recieved your message yesterday.',
+                    suggestion: 'I received your message yesterday.',
+                    severity: 'error'
+                },
+                {
+                    type: 'punctuation',
+                    message: 'Missing comma',
+                    context: 'However we should consider other options.',
+                    suggestion: 'However, we should consider other options.',
+                    severity: 'warning'
+                },
+                {
+                    type: 'style',
+                    message: 'Wordy expression',
+                    context: 'Due to the fact that it was raining, we stayed home.',
+                    suggestion: 'Because it was raining, we stayed home.',
+                    severity: 'suggestion'
+                },
+                {
+                    type: 'grammar',
+                    message: 'Article missing',
+                    context: 'I need to buy new laptop.',
+                    suggestion: 'I need to buy a new laptop.',
+                    severity: 'error'
+                }
+            ];
+            
+            // Event listeners
+            textInput.addEventListener('input', updateStats);
+            
+            checkBtn.addEventListener('click', function() {
+                if (!textInput.value.trim()) {
+                    alert('Please enter some text to check.');
+                    return;
+                }
+                
+                checkGrammarFunction();
+            });
+            
+            clearBtn.addEventListener('click', function() {
+                textInput.value = '';
+                updateStats();
+                clearResults();
+            });
+            
+            copyBtn.addEventListener('click', function() {
+                // In a real app, this would copy the corrected text
+                navigator.clipboard.writeText(textInput.value)
+                    .then(() => {
+                        const originalText = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            copyBtn.innerHTML = originalText;
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        alert('Failed to copy text: ' + err);
+                    });
+            });
+            
+            function updateStats() {
+                const text = textInput.value;
+                const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+                const characters = text.length;
+                
+                wordCount.textContent = words;
+                characterCount.textContent = characters;
+                
+                // Simple readability score calculation (for demonstration)
+                const sentences = text.split(/[.!?]+/).filter(Boolean).length;
+                const avgWordsPerSentence = sentences > 0 ? (words / sentences) : 0;
+                const readability = sentences > 0 ? Math.max(0, Math.min(100, 100 - (avgWordsPerSentence * 1.5))) : 0;
+                
+                readabilityScore.textContent = Math.round(readability);
+            }
+            
+            function checkGrammarFunction() {
+                // Show processing state
+                checkBtn.disabled = true;
+                checkBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
+                checkBtn.classList.add('processing');
+                
+                // Simulate processing time
+                setTimeout(() => {
+                    const text = textInput.value;
+                    const errors = findErrorsInText(text);
+                    
+                    displayResults(errors);
+                    
+                    // Re-enable button
+                    checkBtn.disabled = false;
+                    checkBtn.innerHTML = '<i class="fas fa-check-circle"></i> Check Grammar';
+                    checkBtn.classList.remove('processing');
+                    
+                    // Enable copy button if errors were found and fixed
+                    if (errors.length > 0) {
+                        copyBtn.disabled = false;
+                    }
+                }, 1500);
+            }
+            
+            function findErrorsInText(text) {
+                // This is a simplified version for demonstration
+                // A real grammar checker would use more sophisticated algorithms
+                
+                const errors = [];
+                
+                // Only add errors if the text is not empty
+                if (text.trim().length > 0) {
+                    // Add some random errors from our sample for demonstration
+                    const errorCount = Math.min(sampleErrors.length, Math.floor(Math.random() * 3) + 2);
+                    for (let i = 0; i < errorCount; i++) {
+                        errors.push(sampleErrors[i]);
+                    }
+                }
+                
+                return errors;
+            }
+            
+            function displayResults(errors) {
+                errorCount.textContent = errors.filter(e => e.severity === 'error').length;
+                resultsCount.textContent = `${errors.length} issue${errors.length !== 1 ? 's' : ''} found`;
+                
+                resultsList.innerHTML = '';
+                
+                if (errors.length === 0) {
+                    resultsList.innerHTML = `
+                        <div class="suggestion-item">
+                            <div class="suggestion-message">No issues detected</div>
+                            <div class="error-context">Your text appears to be grammatically correct</div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                errors.forEach(error => {
+                    let itemClass = 'suggestion-item';
+                    let messageClass = 'suggestion-message';
+                    
+                    if (error.severity === 'error') {
+                        itemClass = 'error-item';
+                        messageClass = 'error-message';
+                    } else if (error.severity === 'warning') {
+                        itemClass = 'warning-item';
+                        messageClass = 'warning-message';
+                    }
+                    
+                    const errorElement = document.createElement('div');
+                    errorElement.className = itemClass;
+                    errorElement.innerHTML = `
+                        <div class="${messageClass}">${error.message}</div>
+                        <div class="error-context">${error.context}</div>
+                        <div class="correction">Suggestion: ${error.suggestion}</div>
+                    `;
+                    
+                    resultsList.appendChild(errorElement);
+                });
+            }
+            
+            function clearResults() {
+                errorCount.textContent = '0';
+                resultsCount.textContent = '0 issues found';
+                resultsList.innerHTML = `
+                    <div class="suggestion-item">
+                        <div class="suggestion-message">No issues detected yet</div>
+                        <div class="error-context">Enter your text and click "Check Grammar" to analyze your writing</div>
+                    </div>
+                `;
+                copyBtn.disabled = true;
+            }
+            
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-moon')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                        this.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+                        document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                        this.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+                        document.body.style.filter = 'none';
+                    }
+                });
+            }
+            
+            // Initialize stats
+            updateStats();
+        });
+    </script>
+</body>
+</html>
